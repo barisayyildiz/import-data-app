@@ -10,6 +10,7 @@ import "@jotforminc/jotform.css";
 import FileIcon from "../assets/svg/IconFile.jsx";
 import CloudIcon from "../assets/svg/IconCloud.jsx";
 import DeleteIcon from "../assets/svg/IconDelete.jsx";
+import ImportPage from "../pages/ImportPage";
 
 const DefaultFileInput = () => {
   return (
@@ -83,13 +84,14 @@ const DefaultFilePreviewRenderer = (props) => {
 function App() {
   return (
     <div className="App">
-      <Router>
+      <ImportPage />
+      {/* <Router>
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
         </Routes>
         <Footer />
-      </Router>
+      </Router> */}
     </div>
   );
 }
