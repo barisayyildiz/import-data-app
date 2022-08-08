@@ -6,6 +6,8 @@ import FilePreview from "../components/FilePreview";
 
 function ImportPage() {
   const [file, setFile] = useState(null);
+  const [importedColumns, setImportedColumns] = useState([]);
+  // TODO: form questions, formu seçtikten sonra redux'a kaydedilecek...
 
   const { header, subHeader } = homePageTexts;
 
@@ -16,6 +18,11 @@ function ImportPage() {
     setFile(uploadedFile);
 
     // TODO: dosya sunucuya yollanacak
+
+    // sunucuyu taklit ediyor
+    setTimeout(() => {
+      setImportedColumns(["name", "your adress", "work"]);
+    }, 1000);
   };
 
   const removeFile = () => {
@@ -75,6 +82,7 @@ function ImportPage() {
             Continue
           </button>
         </div>
+        {/* TODO: Dropdown'lar eklenecek */}
       </div>
     </div>
   );
