@@ -12,7 +12,7 @@ function FormPicker() {
 
   return (
     <div
-      style={{ width: "70rem", margin: "50px auto" }}
+      style={{ margin: "50px auto" }}
       className="bg-white border radius border-navy-100 flex justify-between px-4 py-2 cursor-pointer"
     >
       <div className="flex items-center gap-5">

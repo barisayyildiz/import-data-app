@@ -51,36 +51,6 @@ const DefaultFileInput = () => {
   );
 };
 
-const DefaultFilePreviewRenderer = (props) => {
-  const {
-    fileName = "NameName.xls",
-    fileSize = "216 KB",
-    fileIcon = <FileIcon />,
-  } = props;
-  return (
-    <div
-      className="
-				flex flex-row items-center p-4 g-4 
-				border radius bg-navy-25 mx-auto my-0 border-navy-100"
-      style={{
-        width: "70%",
-      }}
-    >
-      <div className="file_icon order-first grow-0">{fileIcon}</div>
-      <div className="details flex-col order-first grow-1 gap-2.5 p-2.5">
-        <p className="color-navy-700 font-medium line-height-md">{fileName}</p>
-        <p className="color-navy-300 line-height-sm">{fileSize}</p>
-      </div>
-      <div
-        className="outline-button order-last 
-				grow-0 flex gap-1 p-2.5 bg-white border-gray-75 border radius"
-      >
-        <DeleteIcon />
-      </div>
-    </div>
-  );
-};
-
 function App() {
   return (
     <div className="App">
