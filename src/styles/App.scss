@@ -1,0 +1,29 @@
+$background: #fff;
+
+body {
+  background: $background;
+  // position: relative;
+  // min-height: 100vh;
+  // padding-bottom: 2.5rem;
+}
+
+// .footer {
+//   position: absolute;
+//   bottom: 0;
+//   width: 100%;
+//   height: 2.5rem;
+// }
+
+a {
+  cursor: pointer;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #a8a8a8;
+  border-radius: 20px;
+}
