@@ -3,7 +3,6 @@ import React from "react";
 import CloudIcon from "../assets/svg/IconCloud.jsx";
 
 function FileInput({ onFileUpload }) {
-  console.log(onFileUpload);
   return (
     <div
       style={{ width: "100%", backgroundColor: "rgba(243, 243, 254, 0.3)" }}

@@ -1,35 +1,64 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { homePageTexts } from "../constants";
 import FormPicker from "../components/FormPicker";
 import FileInput from "../components/FileInput";
 import FilePreview from "../components/FilePreview";
-import Input from "../components/Input";
+import Label from "../components/Label";
 import Dropdown from "../components/Dropdown";
 
 function ImportPage() {
   const [file, setFile] = useState(null);
   const [importedColumns, setImportedColumns] = useState([]);
+
   // TODO: form questions, formu seçtikten sonra redux'a kaydedilecek...
+  const formQuestions = ["Name", "Adress", "Work"];
 
   const { header, subHeader } = homePageTexts;
+  const formRef = useRef(null);
 
   const onFileUpload = (e) => {
-    console.log("hello world");
     const [uploadedFile] = e.target.files;
     console.log(uploadedFile);
     setFile(uploadedFile);
 
     // TODO: dosya sunucuya yollanacak
-
-    // sunucuyu taklit ediyor
     setTimeout(() => {
-      setImportedColumns(["name", "your adress", "work"]);
+      setImportedColumns([
+        {
+          value: "#1",
+          label: "name",
+        },
+        {
+          value: "#2",
+          label: "Your Adress",
+        },
+        {
+          value: "#3",
+          label: "Work",
+        },
+      ]);
     }, 1000);
   };
 
   const removeFile = () => {
-    console.log("file removed...");
     setFile(null);
+    setImportedColumns([]);
+  };
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+
+    let formData = new FormData();
+    formData.append("file", file);
+
+    const data = {};
+    // console.log(e.target["Name"].value);
+    console.log(formQuestions);
+    formQuestions.forEach((label) => {
+      formData.append(label, e.target[label].value);
+    });
+
+    // TODO: formData sunucuya yollanacak
   };
 
   return (
@@ -68,10 +97,52 @@ function ImportPage() {
           )}
         </div>
         <div className="flex flex-col gap-8">
-          <div className="flex flex-row gap-2.5">
-            <p className="flex items-start grow-1">Form Questions</p>
-            <p className="flex items-start grow-1">Imported Columns</p>
-          </div>
+          {/* DROPDOWNS */}
+          {importedColumns.length > 0 && (
+            <form
+              method="POST"
+              ref={formRef}
+              id="form1"
+              action="http://localhost:5000/action"
+              onSubmit={onSubmit}
+              className="flex flex-col items-start gap-5"
+            >
+              <div className="flex flex-col items-start gap-5 w-full">
+                <div className="flex flex-row items-center gap-2.5 w-full">
+                  <div className="flex flex-row items-center py-0.5 px-0 gap-2 w-full">
+                    <p className="flex flex-col item-start p-0 grow-1">
+                      Form Questions
+                    </p>
+                    <p className="flex flex-col item-start p-0 grow-1">
+                      Imported Columns
+                    </p>
+                  </div>
+                </div>
+              </div>
+              {importedColumns.map((item, key) => {
+                return (
+                  <div className="flex flex-col items-start gap-5 w-full">
+                    <div className="flex flex-row items-center gap-2.5 w-full">
+                      <div className="flex flex-row items-center py-0.5 px-0 gap-2 w-full">
+                        <Label
+                          value={formQuestions[key]}
+                          disabled={true}
+                          className="grow-1"
+                        />
+                        <Dropdown
+                          className="grow-1"
+                          options={importedColumns}
+                          id={formQuestions[key]}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+              <input type="submit"></input>
+            </form>
+          )}
+          {/* BUTTONS */}
           <div className="flex flex-row justify-between">
             <button
               style={{ backgroundColor: "#DDDFE9" }}
@@ -85,6 +156,13 @@ function ImportPage() {
               className={`py-3 px-4 color-white font-medium radius ${
                 !file && "opacity-50"
               }`}
+              type="submit"
+              id="form1"
+              onClick={() => {
+                if (formRef) {
+                  formRef.current.submit();
+                }
+              }}
             >
               Continue
             </button>

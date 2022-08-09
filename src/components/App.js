@@ -16,7 +16,7 @@ import Dropdown from "./Dropdown";
 function App() {
   return (
     <div className="App">
-      <Dropdown
+      {/* <Dropdown
         style={{ width: "50%" }}
         id="country"
         options={[
@@ -33,8 +33,8 @@ function App() {
             label: "United States",
           },
         ]}
-      />
-      {/* <ImportPage /> */}
+      /> */}
+      <ImportPage />
       {/* <Router>
         <Header />
         <Routes>
