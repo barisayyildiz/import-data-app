@@ -17,25 +17,8 @@ import "@jotforminc/jotform.css";
 function App() {
   return (
     <div className="App">
-      {/* <FormSelector />
-      <Dropdown
-        options={[
-          {
-            value: "#1",
-            label: "name",
-          },
-          {
-            value: "#2",
-            label: "Your Adress",
-          },
-          {
-            value: "#3",
-            label: "Work",
-          },
-        ]}
-        id={"abc"}
-      /> */}
-      <Router>
+      <FormSelector />
+      {/* <Router>
         <Heading />
         <Routes>
           <Route path="/" element={<Home />} />
@@ -43,7 +26,7 @@ function App() {
           <Route path="/success" element={<SuccessPage />}></Route>
         </Routes>
         <Footer />
-      </Router>
+      </Router> */}
     </div>
   );
 }
