@@ -2,9 +2,24 @@ import React from "react";
 
 import IconForm from "../assets/svg/IconForm";
 
-function FormsListItem({ form: { name, submission, updated } }) {
+function FormsListItem({
+  form: { name, submission, updated, id },
+  selected,
+  setSelected,
+}) {
+  const isSelected = selected === id;
+  const style = {
+    backgroundColor: `${isSelected ? "#DBF1FF" : "#ffffff"}`,
+    borderWidth: "1px",
+    borderRadius: "4px",
+    borderColor: `${isSelected ? "#0099FF" : "#C8CEED"}`,
+    display: "flex",
+    justifyContent: "space-between",
+    cursor: "pointer",
+    padding: "16px 20px",
+  };
   return (
-    <div className="bg-white border radius border-navy-100 flex justify-between py-4 px-5 cursor-pointer">
+    <div style={style} className="unselectable" onClick={() => setSelected(id)}>
       <div className="flex items-center gap-4">
         <IconForm />
         <div className="flex flex-col">

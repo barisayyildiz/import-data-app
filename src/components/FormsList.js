@@ -1,10 +1,17 @@
 import FormsListItem from "./FormsListItem";
 
-function FormsList({ forms }) {
+function FormsList({ forms, selected, setSelected }) {
   return (
     <div className="flex flex-col gap-4 w-full">
-      {forms.map((form, key) => {
-        return <FormsListItem form={form} key={key} />;
+      {forms.map((form) => {
+        return (
+          <FormsListItem
+            selected={selected}
+            setSelected={setSelected}
+            form={form}
+            key={form.id}
+          />
+        );
       })}
     </div>
   );
