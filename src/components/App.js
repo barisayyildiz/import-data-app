@@ -8,12 +8,33 @@ import Home from "./Home";
 import ImportPage from "../pages/ImportPage";
 import SuccessPage from "../pages/SuccessPage";
 
+import FormSelector from "../components/FormSelector";
+import Dropdown from "../components/Dropdown";
+
 import "../styles/App.scss";
 import "@jotforminc/jotform.css";
 
 function App() {
   return (
     <div className="App">
+      {/* <FormSelector />
+      <Dropdown
+        options={[
+          {
+            value: "#1",
+            label: "name",
+          },
+          {
+            value: "#2",
+            label: "Your Adress",
+          },
+          {
+            value: "#3",
+            label: "Work",
+          },
+        ]}
+        id={"abc"}
+      /> */}
       <Router>
         <Heading />
         <Routes>
