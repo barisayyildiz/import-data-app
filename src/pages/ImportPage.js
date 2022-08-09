@@ -3,6 +3,8 @@ import { homePageTexts } from "../constants";
 import FormPicker from "../components/FormPicker";
 import FileInput from "../components/FileInput";
 import FilePreview from "../components/FilePreview";
+import Input from "../components/Input";
+import Dropdown from "../components/Dropdown";
 
 function ImportPage() {
   const [file, setFile] = useState(null);
@@ -40,7 +42,7 @@ function ImportPage() {
           {header}
         </h1>
         <div className="flex flex-col items-center gap-10">
-          <h3 className="text-xl color-navy-300">{subHeader}</h3>
+          {/* <h3 className="text-xl color-navy-300">{subHeader}</h3> */}
         </div>
       </div>
       <FormPicker />
@@ -65,24 +67,29 @@ function ImportPage() {
             />
           )}
         </div>
-        <div className="flex flex-row justify-between">
-          <button
-            style={{ backgroundColor: "#DDDFE9" }}
-            className="py-3 px-4 color-navy-700 font-medium radius"
-          >
-            Back
-          </button>
-          <button
-            disabled={!file ? true : false}
-            style={{ backgroundColor: "#78BB07" }}
-            className={`py-3 px-4 color-white font-medium radius ${
-              !file && "opacity-50"
-            }`}
-          >
-            Continue
-          </button>
+        <div className="flex flex-col gap-8">
+          <div className="flex flex-row gap-2.5">
+            <p className="flex items-start grow-1">Form Questions</p>
+            <p className="flex items-start grow-1">Imported Columns</p>
+          </div>
+          <div className="flex flex-row justify-between">
+            <button
+              style={{ backgroundColor: "#DDDFE9" }}
+              className="py-3 px-4 color-navy-700 font-medium radius"
+            >
+              Back
+            </button>
+            <button
+              disabled={!file ? true : false}
+              style={{ backgroundColor: "#78BB07" }}
+              className={`py-3 px-4 color-white font-medium radius ${
+                !file && "opacity-50"
+              }`}
+            >
+              Continue
+            </button>
+          </div>
         </div>
-        {/* TODO: Dropdown'lar eklenecek */}
       </div>
     </div>
   );
