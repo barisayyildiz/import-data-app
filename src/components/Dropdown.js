@@ -5,7 +5,12 @@ import ArrowIcon from "../assets/svg/IconArrow";
 
 function Dropdown({ options, id, style, required = true }) {
   return (
-    <select name={id} id={id} className="select" required={required}>
+    <select
+      className="pt-4 pr-2 pb-4 pl-4"
+      name={id}
+      id={id}
+      required={required}
+    >
       <option hidden disabled selected value></option>
       {options.map((item, key) => {
         return <option value={item.value}>{item.label}</option>;
