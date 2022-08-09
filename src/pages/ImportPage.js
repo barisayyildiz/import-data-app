@@ -1,4 +1,6 @@
 import React, { useState, useRef } from "react";
+import { useNavigate } from "react-router-dom";
+
 import { homePageTexts } from "../constants";
 import FormPicker from "../components/FormPicker";
 import FileInput from "../components/FileInput";
@@ -9,6 +11,8 @@ import Dropdown from "../components/Dropdown";
 function ImportPage() {
   const [file, setFile] = useState(null);
   const [importedColumns, setImportedColumns] = useState([]);
+
+  const navigate = useNavigate();
 
   // TODO: form questions, formu seçtikten sonra redux'a kaydedilecek...
   const formQuestions = ["Name", "Adress", "Work"];
@@ -65,7 +69,10 @@ function ImportPage() {
   };
 
   return (
-    <div style={{ width: "70rem" }} className="mt-8 mx-auto">
+    <div
+      style={{ width: "70rem" }}
+      className="mt-8 mx-auto flex flex-col justify-center gap-8"
+    >
       <div className="flex flex-col items-center gap-3">
         <h1 className="text-4xl font-bold color-navy-700 font-circular">
           {header}
@@ -145,7 +152,13 @@ function ImportPage() {
             <button
               style={{ backgroundColor: "#DDDFE9" }}
               className="py-3 px-4 color-navy-700 font-medium radius"
-              onClick={removeFile}
+              onClick={() => {
+                if (file) {
+                  removeFile();
+                } else {
+                  navigate("/");
+                }
+              }}
             >
               Back
             </button>

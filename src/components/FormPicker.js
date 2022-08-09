@@ -11,10 +11,7 @@ function FormPicker() {
   };
 
   return (
-    <div
-      style={{ margin: "50px auto" }}
-      className="bg-white border radius border-navy-100 flex justify-between px-4 py-2 cursor-pointer"
-    >
+    <div className="bg-white border radius border-navy-100 flex justify-between px-4 py-2 cursor-pointer">
       <div className="flex items-center gap-5">
         <IconForm />
         <div className="flex flex-col gap-1.5">
