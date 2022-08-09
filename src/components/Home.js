@@ -18,12 +18,13 @@ function Home() {
           </h1>
           <div className="flex flex-col items-center gap-10">
             <h3 className="text-2xl color-navy-300">{subHeader}</h3>
-            <button
+            <a
+              href="/import"
               className="flex color-white radius py-3 px-8 font-medium"
               style={{ backgroundColor: "#78BB07" }}
             >
               {buttonText}
-            </button>
+            </a>
           </div>
         </div>
       </div>

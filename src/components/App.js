@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import Header from "./Header";
+import Heading from "./Heading";
 import Home from "./Home";
 import Footer from "./Footer";
 
@@ -16,32 +16,14 @@ import Dropdown from "./Dropdown";
 function App() {
   return (
     <div className="App">
-      {/* <Dropdown
-        style={{ width: "50%" }}
-        id="country"
-        options={[
-          {
-            value: "TR",
-            label: "Turkey",
-          },
-          {
-            value: "CZ",
-            label: "Czechia",
-          },
-          {
-            value: "US",
-            label: "United States",
-          },
-        ]}
-      /> */}
-      <ImportPage />
-      {/* <Router>
-        <Header />
+      <Router>
+        <Heading />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/import" element={<ImportPage />}></Route>
         </Routes>
         <Footer />
-      </Router> */}
+      </Router>
     </div>
   );
 }

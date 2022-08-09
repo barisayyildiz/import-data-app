@@ -2,7 +2,7 @@ import React from "react";
 
 import JotformIcon from "../assets/svg/IconJotformText.jsx";
 
-function Header() {
+function Heading() {
   return (
     <div className="flex flex-row justify-start items-center py-4 px-8 gap-50">
       <JotformIcon />
@@ -13,4 +13,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default Heading;

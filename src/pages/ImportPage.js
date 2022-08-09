@@ -65,17 +65,12 @@ function ImportPage() {
   };
 
   return (
-    <div style={{ width: "70rem", margin: "0px auto" }}>
-      <div
-        style={{ width: "100%" }}
-        className="flex flex-col items-center gap-4"
-      >
+    <div style={{ width: "70rem" }} className="mt-8 mx-auto">
+      <div className="flex flex-col items-center gap-3">
         <h1 className="text-4xl font-bold color-navy-700 font-circular">
           {header}
         </h1>
-        <div className="flex flex-col items-center gap-10">
-          {/* <h3 className="text-xl color-navy-300">{subHeader}</h3> */}
-        </div>
+        <h3 className="text-md color-navy-300">{subHeader}</h3>
       </div>
       <FormPicker />
       <div
