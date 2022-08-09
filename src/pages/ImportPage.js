@@ -55,8 +55,6 @@ function ImportPage() {
     let formData = new FormData();
     formData.append("file", file);
 
-    const data = {};
-    // console.log(e.target["Name"].value);
     formQuestions.forEach((label) => {
       formData.append(label, e.target[label].value);
     });
@@ -131,7 +129,6 @@ function ImportPage() {
                       <div className="flex flex-row items-center py-0.5 px-0 gap-2 w-full">
                         <Label
                           value={formQuestions[key]}
-                          disabled={true}
                           className="grow-1"
                         />
                         <Dropdown

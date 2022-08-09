@@ -26,14 +26,13 @@ function SuccessPage() {
           <a
             href="/import"
             style={{ backgroundColor: "#78BB07" }}
-            className="color-white py-3 px-8 radius flex flex-row gap-2.5 font-medium"
+            className="color-white py-3 px-8 radius flex flex-row gap-2.5 font-medium text-xl"
           >
             Import More Data
           </a>
           <a
             className="border-2 radius border-blue-400 py-3 px-8 color-blue-400 font-medium
-						flex gap-2.5 flex-row justify-center items-center
-					"
+						flex gap-2.5 flex-row justify-center items-center text-xl"
           >
             <TableIcon />
             <span>Go to Jotform Tables</span>
