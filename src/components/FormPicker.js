@@ -19,7 +19,7 @@ function FormPicker() {
         <IconForm />
         <div className="flex flex-col gap-1.5">
           <div className="flex gap-1.5">
-            <p className="font-medium">{selectedForm.name}</p>
+            <p className="font-medium color-navy-700">{selectedForm.name}</p>
             <IconLink />
           </div>
           <p className="color-navy-300 text-sm">
@@ -28,7 +28,7 @@ function FormPicker() {
           </p>
         </div>
       </div>
-      <button className="bg-blue-400 radius color-white px-3 py-4">
+      <button className="bg-blue-400 radius color-white px-4 py-3">
         Change Form
       </button>
     </div>

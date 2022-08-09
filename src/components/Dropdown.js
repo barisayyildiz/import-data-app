@@ -3,9 +3,9 @@ import "../styles/Dropdown.scss";
 
 import ArrowIcon from "../assets/svg/IconArrow";
 
-function Dropdown({ options, id, style }) {
+function Dropdown({ options, id, style, required = true }) {
   return (
-    <select name={id} id={id} className="select">
+    <select name={id} id={id} className="select" required={required}>
       <option hidden disabled selected value></option>
       {options.map((item, key) => {
         return <option value={item.value}>{item.label}</option>;

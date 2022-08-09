@@ -53,10 +53,13 @@ function ImportPage() {
 
     const data = {};
     // console.log(e.target["Name"].value);
-    console.log(formQuestions);
     formQuestions.forEach((label) => {
       formData.append(label, e.target[label].value);
     });
+
+    for (const value of formData.values()) {
+      console.log(value);
+    }
 
     // TODO: formData sunucuya yollanacak
   };
@@ -147,6 +150,7 @@ function ImportPage() {
             <button
               style={{ backgroundColor: "#DDDFE9" }}
               className="py-3 px-4 color-navy-700 font-medium radius"
+              onClick={removeFile}
             >
               Back
             </button>
