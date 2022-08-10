@@ -1,20 +1,16 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { selectForm } from "../store/slices/formSlice";
+import { toggleModal } from "../store/slices/modalSlice";
 
 import IconLink from "../assets/svg/IconLink";
 import IconForm from "../assets/svg/IconForm";
 
 function FormPicker() {
-  const selectedForm = {
-    name: "Event Registration",
-    submission: 196,
-    updated: "20 May 2021",
-  };
+  const { allForms, selectedFormId } = useSelector(selectForm);
+  const selectedForm = allForms.find((form) => form.id === selectedFormId);
 
-  const state = useSelector(selectForm);
-  // console.log(selectedFormId);
-  console.log(state);
+  const dispath = useDispatch();
 
   return (
     <div className="bg-white border radius border-navy-100 flex justify-between px-4 py-2 cursor-pointer">
@@ -31,7 +27,10 @@ function FormPicker() {
           </p>
         </div>
       </div>
-      <button className="bg-blue-400 radius color-white px-4 py-3">
+      <button
+        onClick={() => dispath(toggleModal())}
+        className="bg-blue-400 radius color-white px-4 py-3"
+      >
         Change Form
       </button>
     </div>

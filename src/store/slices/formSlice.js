@@ -8,7 +8,7 @@ export const formSlice = createSlice({
   },
   reducers: {
     setSelectedForm: (state, action) => {
-      state.selectedForm = action.payload;
+      state.selectedFormId = action.payload;
     },
     setAllForms: (state, action) => {
       state.allForms = action.payload;
