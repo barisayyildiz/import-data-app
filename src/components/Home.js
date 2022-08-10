@@ -24,7 +24,6 @@ function Home() {
             <h3 className="text-2xl color-navy-300">{subHeader}</h3>
             <a
               onClick={() => dispatch(toggleModal())}
-              // href="/import"
               className="flex color-white radius py-3 px-8 font-medium"
               style={{ backgroundColor: "#78BB07" }}
             >

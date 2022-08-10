@@ -11,7 +11,7 @@ function Dropdown({ options, id, style, required = true }) {
       id={id}
       required={required}
     >
-      <option hidden disabled selected value></option>
+      <option hidden disabled selected></option>
       {options.map((item, key) => {
         return <option value={item.value}>{item.label}</option>;
       })}

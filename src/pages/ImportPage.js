@@ -1,5 +1,7 @@
 import React, { useState, useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+
+import { selectForm } from "../store/slices/formSlice";
 
 import { homePageTexts } from "../constants";
 import FormPicker from "../components/FormPicker";
@@ -12,7 +14,11 @@ function ImportPage() {
   const [file, setFile] = useState(null);
   const [importedColumns, setImportedColumns] = useState([]);
 
-  const navigate = useNavigate();
+  const { selectedFormId } = useSelector(selectForm);
+
+  if (!selectedFormId) {
+    window.location = "/";
+  }
 
   // TODO: form questions, formu seçtikten sonra redux'a kaydedilecek...
   const formQuestions = ["Name", "Adress", "Work"];
@@ -103,10 +109,8 @@ function ImportPage() {
           {/* DROPDOWNS */}
           {importedColumns.length > 0 && (
             <form
-              method="POST"
               ref={formRef}
               id="form1"
-              action="http://localhost:5000/action"
               onSubmit={onSubmit}
               className="flex flex-col items-start gap-5"
             >
@@ -127,10 +131,7 @@ function ImportPage() {
                   <div className="flex flex-col items-start gap-5 w-full">
                     <div className="flex flex-row items-center gap-2.5 w-full">
                       <div className="flex flex-row items-center py-0.5 px-0 gap-2 w-full">
-                        <Label
-                          value={formQuestions[key]}
-                          className="grow-1"
-                        />
+                        <Label value={formQuestions[key]} className="grow-1" />
                         <Dropdown
                           className="grow-1"
                           options={importedColumns}
@@ -153,7 +154,7 @@ function ImportPage() {
                 if (file) {
                   removeFile();
                 } else {
-                  navigate("/");
+                  window.location("/");
                 }
               }}
             >
