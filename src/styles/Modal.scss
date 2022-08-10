@@ -8,11 +8,12 @@
 }
 
 .modal-base {
-  top: 5%;
+  max-height: 700px;
+  top: 15%;
   position: relative;
   background-color: #ffffff;
   margin: auto;
-  width: 50%;
+  width: 40rem;
   opacity: 0;
   -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;

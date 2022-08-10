@@ -18,7 +18,7 @@ function App() {
   return (
     <div className="App">
       <FormSelector />
-      {/* <Router>
+      <Router>
         <Heading />
         <Routes>
           <Route path="/" element={<Home />} />
@@ -26,7 +26,7 @@ function App() {
           <Route path="/success" element={<SuccessPage />}></Route>
         </Routes>
         <Footer />
-      </Router> */}
+      </Router>
     </div>
   );
 }
