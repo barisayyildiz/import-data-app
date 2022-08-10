@@ -1,15 +1,23 @@
+.modal-content-wrapper {
+  > div {
+    padding: 20px;
+  }
+  > .modal-content {
+    padding: 10px 40px;
+  }
+}
+
 .modal-base {
   top: 5%;
   position: relative;
   background-color: #ffffff;
   margin: auto;
-  // padding: 10px 20px;
-  border: 1px solid #888;
   width: 50%;
   opacity: 0;
   -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
   transform: scale(0.8);
+  border-radius: 4px;
 }
 
 .modal-base_after-open {
@@ -28,7 +36,6 @@
   left: 0;
   right: 0;
   bottom: 0;
-  // background-color: rgba(66, 66, 66, 0.5);
   background-color: rgba(10, 21, 81, 0.6);
   opacity: 0;
   transition: all 0.3s ease-out;

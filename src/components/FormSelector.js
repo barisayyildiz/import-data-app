@@ -46,8 +46,11 @@ function FormSelector() {
 
   return (
     <Modal isOpen={isOpen} onRequestClose={() => setIsOpen(!isOpen)}>
-      <div className="flex flex-col gap-4">
-        <div className="flex flex-row justify-start gap-4 pt-4 pr-4 pb-0 pl-4">
+      <div className="flex flex-col gap-4 modal-content-wrapper">
+        <div
+          className="flex flex-row justify-start gap-4 border-b"
+          style={{ borderColor: "#DCE2F0", borderBottomWidth: "2px" }}
+        >
           <div className="grow-1 flex flex-col gap-1.5">
             <h1 className="font-medium text-xl">Select Forms</h1>
             <h3 style={{ color: "#60658C" }}>
@@ -59,22 +62,27 @@ function FormSelector() {
             <CloseIcon />
           </div>
         </div>
-        <Divider />
-        <div className="w-full flex flex-col justify-center items-center gap-4 pb-4 px-5">
-          <input
-            style={{ backgroundColor: "#F3F3FE" }}
-            className="nosubmit color-navy-300 radius bg-navy-25 w-full"
-            placeholder="Search in forms"
-          ></input>
-          <FormsList
-            selected={selected}
-            setSelected={setSelected}
-            forms={mockForms}
-          />
+        <div className="modal-content">
+          <div className="w-full flex flex-col justify-center items-center gap-4">
+            <input
+              style={{ backgroundColor: "#F3F3FE" }}
+              className="nosubmit color-navy-300 radius bg-navy-25 w-full"
+              placeholder="Search in forms"
+            ></input>
+            <FormsList
+              selected={selected}
+              setSelected={setSelected}
+              forms={mockForms}
+            />
+          </div>
         </div>
         <div
-          className="flex flex-row justify-between items-center py-3 px-5 border-t"
-          style={{ backgroundColor: "#FAFAFC", borderColor: "#DCE2F0" }}
+          className="flex flex-row justify-between items-center"
+          style={{
+            backgroundColor: "#FAFAFC",
+            borderColor: "#DCE2F0",
+            borderTopWidth: "2px",
+          }}
         >
           <a
             style={{
