@@ -7,7 +7,7 @@ export default function IconClose() {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <g clip-path="url(#clip0_1_1310)">
+      <g clipPath="url(#clip0_1_1310)">
         <path
           d="M18 36.6875C27.9411 36.6875 36 28.6286 36 18.6875C36 8.74638 27.9411 0.6875 18 0.6875C8.05888 0.6875 0 8.74638 0 18.6875C0 28.6286 8.05888 36.6875 18 36.6875Z"
           fill="#EDEEF5"

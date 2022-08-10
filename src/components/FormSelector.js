@@ -1,51 +1,41 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  selectForm,
+  setAllForms,
+  setSelectedForm,
+} from "../store/slices/formSlice";
+import { selectModal, toggleModal } from "../store/slices/modalSlice";
+
 import "../styles/FormSelector.scss";
 import FormsList from "./FormsList";
 
 import Modal from "./Modal";
-import Divider from "./Divider";
-
 import CloseIcon from "../assets/svg/IconClose";
 
+import { mockForms } from "../constants/index";
+
 function FormSelector() {
-  const mockForms = [
-    {
-      id: "#1",
-      name: "Mood Survey",
-      submission: 196,
-      updated: "20 May 2021",
-    },
-    {
-      id: "#2",
-      name: "Workshop Registration",
-      submission: 196,
-      updated: "20 May 2021",
-    },
-    {
-      id: "#3",
-      name: "Team",
-      submission: 196,
-      updated: "20 May 2021",
-    },
-    {
-      id: "#4",
-      name: "Event Registration",
-      submission: 196,
-      updated: "20 May 2021",
-    },
-    {
-      id: "#5",
-      name: "Book Club Registration",
-      submission: 196,
-      updated: "20 May 2021",
-    },
-  ];
+  const dispatch = useDispatch();
+  const { allForms, selectedForm } = useSelector(selectForm);
+  const { isOpen } = useSelector(selectModal);
+
+  useEffect(() => {
+    // TODO: API'ye istek atılarak getirilecek
+    setTimeout(() => {}, 1000);
+    dispatch(setAllForms(mockForms));
+  }, []);
 
   const [selected, setSelected] = useState(null);
-  const [isOpen, setIsOpen] = useState(true);
+  const handleSubmit = () => {
+    dispatch(setSelectedForm(selected));
+  };
+  const handleClose = () => {
+    dispatch(toggleModal());
+  };
 
   return (
-    <Modal isOpen={isOpen} onRequestClose={() => setIsOpen(!isOpen)}>
+    <Modal isOpen={isOpen} onRequestClose={handleClose}>
       <div className="flex flex-col gap-4 modal-content-wrapper">
         <div
           className="flex flex-row justify-start gap-4 border-b"
@@ -72,7 +62,7 @@ function FormSelector() {
             <FormsList
               selected={selected}
               setSelected={setSelected}
-              forms={mockForms}
+              forms={allForms}
             />
           </div>
         </div>
@@ -91,6 +81,7 @@ function FormSelector() {
               color: "#A0A6C3",
             }}
             className="radius py-3 px-8"
+            onClick={handleClose}
           >
             CANCEL
           </a>
@@ -99,7 +90,9 @@ function FormSelector() {
               backgroundColor: "#78BB07",
               color: "#ffffff",
             }}
+            href="/import"
             className="radius py-3 px-8"
+            onClick={handleSubmit}
           >
             DONE
           </a>

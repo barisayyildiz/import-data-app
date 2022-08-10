@@ -2,6 +2,7 @@ export const companyInfo = {
   location: "111 Pine St. Suite 1815, San Francisco, CA 94111",
   name: "© 2021 JotForm Inc.",
 };
+
 export const homePageTexts = {
   header: "Import Submissions to your Jotform Account!",
   subHeader:
@@ -49,3 +50,36 @@ export const homePageTexts = {
     ],
   },
 };
+
+export const mockForms = [
+  {
+    id: "#1",
+    name: "Mood Survey",
+    submission: 196,
+    updated: "20 May 2021",
+  },
+  {
+    id: "#2",
+    name: "Workshop Registration",
+    submission: 196,
+    updated: "20 May 2021",
+  },
+  {
+    id: "#3",
+    name: "Team",
+    submission: 196,
+    updated: "20 May 2021",
+  },
+  {
+    id: "#4",
+    name: "Event Registration",
+    submission: 196,
+    updated: "20 May 2021",
+  },
+  {
+    id: "#5",
+    name: "Book Club Registration",
+    submission: 196,
+    updated: "20 May 2021",
+  },
+];
