@@ -6,7 +6,7 @@ function FileInput({ onFileUpload }) {
   return (
     <div
       style={{ width: "100%", backgroundColor: "rgba(243, 243, 254, 0.3)" }}
-      className="border border-dashed radius border-navy-75 py-5 px-8"
+      className="border border-dashed radius border-navy-75 p-11"
     >
       {/* <form ref={formRef} onSubmit={handleSubmit}> */}
       <input
