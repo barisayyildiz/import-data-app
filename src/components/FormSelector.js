@@ -1,5 +1,6 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useMemo } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import debounce from "lodash.debounce";
 import {
   selectForm,
   setAllForms,
@@ -29,8 +30,9 @@ function FormSelector() {
     }, 1000);
   }, []);
 
-  const [searched, setSearched] = useState("");
+  const [query, setQuery] = useState("");
   const [selected, setSelected] = useState(null);
+
   const handleSubmit = () => {
     dispatch(setSelectedForm(selected));
   };
@@ -40,15 +42,23 @@ function FormSelector() {
   };
 
   const filterForms = () => {
-    console.log(inputRef);
-    if (!inputRef) {
-      const inputReg = new RegExp(inputRef.current.value);
-      return allForms.filter((form) => inputReg.test(form.name));
+    if (query !== "") {
+      const reg = new RegExp(query, "i");
+      return allForms.filter((form) => reg.test(form.name));
     } else {
       return allForms;
     }
   };
   const filteredForms = filterForms();
+
+  const changeHandler = (e) => {
+    setQuery(e.target.value);
+  };
+
+  const debouncedChangeHandler = useMemo(
+    () => debounce(changeHandler, 300),
+    []
+  );
 
   return (
     <Modal isOpen={isOpen} ariaHideApp={false} onRequestClose={handleClose}>
@@ -72,6 +82,7 @@ function FormSelector() {
           <div className="w-full flex flex-col justify-center items-center gap-4">
             <input
               ref={inputRef}
+              onChange={debouncedChangeHandler}
               // value={searched}
               // onChange={(e) => setSearched(e.target.value)}
               style={{ backgroundColor: "#F3F3FE" }}

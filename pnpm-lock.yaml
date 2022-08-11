@@ -7,6 +7,7 @@ specifiers:
   '@testing-library/react': ^13.3.0
   '@testing-library/user-event': ^13.5.0
   axios: ^0.27.2
+  debounce: ^1.2.1
   node-sass: ^7.0.1
   react: ^18.2.0
   react-dom: ^18.2.0
@@ -27,6 +28,7 @@ dependencies:
   '@testing-library/react': 13.3.0_biqbaboplfbrettd7655fr4n2y
   '@testing-library/user-event': 13.5.0
   axios: 0.27.2
+  debounce: 1.2.1
   node-sass: 7.0.1
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
@@ -4141,6 +4143,10 @@ packages:
       abab: 2.0.6
       whatwg-mimetype: 2.3.0
       whatwg-url: 8.7.0
+    dev: false
+
+  /debounce/1.2.1:
+    resolution: {integrity: sha512-XRRe6Glud4rd/ZGQfiV1ruXSfbvfJedlV9Y6zOlP+2K04vBYiJEte6stfFkCP03aMnY5tsipamumUjL14fofug==}
     dev: false
 
   /debug/2.6.9:

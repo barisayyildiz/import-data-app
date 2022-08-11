@@ -155,6 +155,7 @@ function ImportPage() {
                 </div>
               </div>
               {importedColumns.map((item, key) => {
+                const hasError = errors.includes(formQuestions[key]);
                 return (
                   <div className="flex flex-col items-start gap-5 w-full">
                     <div className="flex flex-row items-center gap-2.5 w-full">
@@ -169,9 +170,7 @@ function ImportPage() {
                           {/* validation */}
                           <p
                             className={`${
-                              errors.includes(formQuestions[key])
-                                ? "color-red-400 font-medium"
-                                : "hidden"
+                              hasError ? "color-red-400 font-medium" : "hidden"
                             }`}
                           >
                             {formQuestions[key]} should be selected
