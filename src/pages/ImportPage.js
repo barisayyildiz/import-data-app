@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 
 import { selectForm } from "../store/slices/formSlice";
@@ -25,7 +25,6 @@ function ImportPage() {
   const formQuestions = ["Name", "Adress", "Work"];
 
   const { header, subHeader } = homePageTexts;
-  const formRef = useRef(null);
 
   const onFileUpload = (e) => {
     const [uploadedFile] = e.target.files;
@@ -75,7 +74,6 @@ function ImportPage() {
     e.preventDefault();
 
     if (!isValidForm(e.target)) {
-      console.log("not a valid form");
       return;
     }
 
@@ -97,9 +95,6 @@ function ImportPage() {
 
     // TODO: formData sunucuya yollanacak
   };
-
-  console.log(errors);
-
   return (
     <div
       style={{ width: "70rem" }}
@@ -137,7 +132,6 @@ function ImportPage() {
           {/* DROPDOWNS */}
           {importedColumns.length > 0 && (
             <form
-              ref={formRef}
               id="form1"
               onSubmit={onSubmit}
               className="flex flex-col items-start gap-5"
@@ -181,7 +175,7 @@ function ImportPage() {
                   </div>
                 );
               })}
-              <input type="submit"></input>
+              <input id="formsubmit" className="hidden" type="submit"></input>
             </form>
           )}
           {/* BUTTONS */}
@@ -203,14 +197,12 @@ function ImportPage() {
               disabled={!file ? true : false}
               style={{ backgroundColor: "#78BB07" }}
               className={`py-3 px-4 color-white font-medium radius ${
-                !file && "opacity-50"
+                !file && "opacity-50 cursor-not-allowed"
               }`}
               type="submit"
               id="form1"
               onClick={() => {
-                if (formRef) {
-                  formRef.current.submit();
-                }
+                document.getElementById("formsubmit").click();
               }}
             >
               Continue
