@@ -2,10 +2,8 @@ import React from "react";
 
 import CheckIcon from "../assets/svg/IconCheck";
 import TableIcon from "../assets/svg/IconTable";
-import { homePageTexts } from "../constants";
 
 function SuccessPage() {
-  const { subHeader } = homePageTexts;
   return (
     <div className="flex flex-col justify-center items-center gap-10 mt-20">
       <CheckIcon />

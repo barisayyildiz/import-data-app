@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-import { selectForm } from "../store/slices/formSlice";
+import { selectModal } from "../store/slices/modalSlice";
 
 import Heading from "./Heading";
 import Footer from "./Footer";
@@ -19,8 +19,10 @@ import "../styles/App.scss";
 import "@jotforminc/jotform.css";
 
 function App() {
+  const { isOpen } = useSelector(selectModal);
   return (
     <div className="App">
+      {isOpen && <FormSelector />}
       <FormSelector />
       <Router>
         <Heading />

@@ -1,11 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   selectForm,
   setAllForms,
   setSelectedForm,
 } from "../store/slices/formSlice";
-import { selectModal, toggleModal } from "../store/slices/modalSlice";
+import { selectModal, closeModal } from "../store/slices/modalSlice";
 
 import "../styles/FormSelector.scss";
 import FormsList from "./FormsList";
@@ -20,22 +20,38 @@ function FormSelector() {
   const { allForms, selectedForm } = useSelector(selectForm);
   const { isOpen } = useSelector(selectModal);
 
+  const inputRef = useRef(null);
+
+  // TODO: API'ye istek atılarak getirilecek
   useEffect(() => {
-    // TODO: API'ye istek atılarak getirilecek
-    setTimeout(() => {}, 1000);
-    dispatch(setAllForms(mockForms));
+    setTimeout(() => {
+      dispatch(setAllForms(mockForms));
+    }, 1000);
   }, []);
 
+  const [searched, setSearched] = useState("");
   const [selected, setSelected] = useState(null);
   const handleSubmit = () => {
     dispatch(setSelectedForm(selected));
   };
   const handleClose = () => {
-    dispatch(toggleModal());
+    console.log("handle close");
+    dispatch(closeModal());
   };
 
+  const filterForms = () => {
+    console.log(inputRef);
+    if (!inputRef) {
+      const inputReg = new RegExp(inputRef.current.value);
+      return allForms.filter((form) => inputReg.test(form.name));
+    } else {
+      return allForms;
+    }
+  };
+  const filteredForms = filterForms();
+
   return (
-    <Modal isOpen={isOpen} onRequestClose={handleClose}>
+    <Modal isOpen={isOpen} ariaHideApp={false} onRequestClose={handleClose}>
       <div className="flex flex-col gap-4 modal-content-wrapper">
         <div
           className="flex flex-row justify-start gap-4 border-b"
@@ -55,6 +71,9 @@ function FormSelector() {
         <div className="modal-content">
           <div className="w-full flex flex-col justify-center items-center gap-4">
             <input
+              ref={inputRef}
+              // value={searched}
+              // onChange={(e) => setSearched(e.target.value)}
               style={{ backgroundColor: "#F3F3FE" }}
               className="nosubmit color-navy-300 radius bg-navy-25 w-full"
               placeholder="Search in forms"
@@ -62,7 +81,8 @@ function FormSelector() {
             <FormsList
               selected={selected}
               setSelected={setSelected}
-              forms={allForms}
+              // forms={allForms}
+              forms={filteredForms}
             />
           </div>
         </div>
