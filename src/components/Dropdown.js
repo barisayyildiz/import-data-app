@@ -3,7 +3,7 @@ import "../styles/Dropdown.scss";
 
 import ArrowIcon from "../assets/svg/IconArrow";
 
-function Dropdown({ options, id, style, required = true }) {
+function Dropdown({ options, id, style, required = false }) {
   return (
     <select
       className="pt-4 pr-2 pb-4 pl-4"

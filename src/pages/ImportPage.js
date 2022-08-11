@@ -13,6 +13,7 @@ import Dropdown from "../components/Dropdown";
 function ImportPage() {
   const [file, setFile] = useState(null);
   const [importedColumns, setImportedColumns] = useState([]);
+  const [errors, setErrors] = useState([]);
 
   const { selectedFormId } = useSelector(selectForm);
 
@@ -51,17 +52,42 @@ function ImportPage() {
   };
 
   const removeFile = () => {
+    setErrors([]);
     setFile(null);
     setImportedColumns([]);
+  };
+
+  const isValidForm = (form) => {
+    let tempErrors = [];
+    formQuestions.forEach((label) => {
+      if (!form[label].value) {
+        tempErrors.push(label);
+      }
+    });
+    setErrors(tempErrors);
+    if (tempErrors.length > 0) {
+      return false;
+    }
+    return true;
   };
 
   const onSubmit = (e) => {
     e.preventDefault();
 
+    if (!isValidForm(e.target)) {
+      console.log("not a valid form");
+      return;
+    }
+
     let formData = new FormData();
     formData.append("file", file);
 
     formQuestions.forEach((label) => {
+      console.log(
+        e.target[label],
+        e.target[label].value,
+        e.target[label].value === ""
+      );
       formData.append(label, e.target[label].value);
     });
 
@@ -71,6 +97,8 @@ function ImportPage() {
 
     // TODO: formData sunucuya yollanacak
   };
+
+  console.log(errors);
 
   return (
     <div
@@ -130,13 +158,25 @@ function ImportPage() {
                 return (
                   <div className="flex flex-col items-start gap-5 w-full">
                     <div className="flex flex-row items-center gap-2.5 w-full">
-                      <div className="flex flex-row items-center py-0.5 px-0 gap-2 w-full">
+                      <div className="flex flex-row items-start py-0.5 px-0 gap-2 w-full">
                         <Label value={formQuestions[key]} className="grow-1" />
-                        <Dropdown
-                          className="grow-1"
-                          options={importedColumns}
-                          id={formQuestions[key]}
-                        />
+                        <div className="w-full flex flex-col gap-2.5">
+                          <Dropdown
+                            className="grow-1"
+                            options={importedColumns}
+                            id={formQuestions[key]}
+                          />
+                          {/* validation */}
+                          <p
+                            className={`${
+                              errors.includes(formQuestions[key])
+                                ? "color-red-400 font-medium"
+                                : "hidden"
+                            }`}
+                          >
+                            {formQuestions[key]} should be selected
+                          </p>
+                        </div>
                       </div>
                     </div>
                   </div>
