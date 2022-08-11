@@ -22,7 +22,6 @@ function App() {
   const { isOpen } = useSelector(selectModal);
   return (
     <div className="App">
-      {isOpen && <FormSelector />}
       <FormSelector />
       <Router>
         <Heading />
