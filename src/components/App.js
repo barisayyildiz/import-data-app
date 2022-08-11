@@ -18,8 +18,12 @@ import Dropdown from "../components/Dropdown";
 import "../styles/App.scss";
 import "@jotforminc/jotform.css";
 
+import { getCookie, setCookie } from "../utils";
+
 function App() {
-  const { isOpen } = useSelector(selectModal);
+  if (!getCookie("apiKey")) {
+    setCookie("apiKey", process.env.REACT_APP_API_KEY);
+  }
   return (
     <div className="App">
       <FormSelector />
