@@ -3,13 +3,18 @@ import { useSelector, useDispatch } from "react-redux";
 import { selectForm } from "../store/slices/formSlice";
 import { toggleModal } from "../store/slices/modalSlice";
 
+import { formatDate } from "../utils";
+
 import IconLink from "../assets/svg/IconLink";
 import IconForm from "../assets/svg/IconForm";
 
 function FormPicker() {
   const { allForms, selectedFormId } = useSelector(selectForm);
-  const selectedForm = allForms.find((form) => form.id === selectedFormId);
+  const { title, total, updated_at, url } = allForms.find(
+    (form) => form.id === selectedFormId
+  );
 
+  const date = formatDate(updated_at);
   const dispath = useDispatch();
 
   return (
@@ -18,12 +23,13 @@ function FormPicker() {
         <IconForm />
         <div className="flex flex-col gap-1.5">
           <div className="flex gap-1.5">
-            <p className="font-medium color-navy-700">{selectedForm.name}</p>
-            <IconLink />
+            <p className="font-medium color-navy-700">{title}</p>
+            <a href={url} target="_blank">
+              <IconLink />
+            </a>
           </div>
           <p className="color-navy-300 text-sm">
-            {selectedForm.submission} submissions. Updated on{" "}
-            {selectedForm.updated}
+            {total} submissions. Updated on {date}
           </p>
         </div>
       </div>

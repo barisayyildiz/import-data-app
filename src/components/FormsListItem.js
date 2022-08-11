@@ -6,15 +6,19 @@ import {
   setAllForms,
 } from "../store/slices/formSlice";
 
+import { formatDate } from "../utils";
+
 import IconForm from "../assets/svg/IconForm";
 
 function FormsListItem({
-  form: { name, submission, updated, id },
+  form: { title, count, updated_at, id },
   selected,
   setSelected,
 }) {
   const dispatch = useDispatch();
   const { selectedForm } = useSelector(selectForm);
+
+  const date = formatDate(updated_at);
 
   const isSelected = selected === id;
   // const isSelected = selectedForm === id;
@@ -40,10 +44,10 @@ function FormsListItem({
         <IconForm />
         <div className="flex flex-col">
           <div className="flex gap-1.5">
-            <p className="font-medium color-navy-700">{name}</p>
+            <p className="font-medium color-navy-700">{title}</p>
           </div>
           <p className="color-navy-300 text-sm">
-            {submission} submissions. Updated on {updated}
+            {count} submissions. Updated on {date}
           </p>
         </div>
       </div>

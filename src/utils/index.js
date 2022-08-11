@@ -8,3 +8,10 @@ export const sizeFormatter = (size) => {
   }
   return `${parseFloat(size.toFixed(2))} ${units[index]}`;
 };
+
+export const formatDate = (day) =>
+  new Date(day).toLocaleString("en", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });

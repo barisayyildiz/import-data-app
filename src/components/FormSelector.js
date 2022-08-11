@@ -1,6 +1,10 @@
 import { useState, useEffect, useRef, useMemo } from "react";
+import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import debounce from "lodash.debounce";
+
+import { getEnabledForms } from "../utils/api";
+
 import {
   selectForm,
   setAllForms,
@@ -25,9 +29,21 @@ function FormSelector() {
 
   // TODO: API'ye istek atılarak getirilecek
   useEffect(() => {
-    setTimeout(() => {
-      dispatch(setAllForms(mockForms));
-    }, 1000);
+    console.log("inside use effect");
+
+    getEnabledForms()
+      .then(({ data: { content } }) => {
+        console.log(content);
+        dispatch(setAllForms(content));
+        // dispatch(setAllForms(content))
+      })
+      .catch((e) => {
+        console.error(e);
+      });
+
+    // setTimeout(() => {
+    //   dispatch(setAllForms(mockForms));
+    // }, 1000);
   }, []);
 
   const [query, setQuery] = useState("");
