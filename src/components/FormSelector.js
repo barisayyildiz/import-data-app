@@ -91,7 +91,9 @@ function FormSelector() {
           </div>
           <div>
             {/* TODO: clickable yapılacak */}
-            <CloseIcon />
+            <div onClick={handleClose} className="cursor-pointer">
+              <CloseIcon />
+            </div>
           </div>
         </div>
         <div className="modal-content">

@@ -10,6 +10,8 @@ import FilePreview from "../components/FilePreview";
 import Label from "../components/Label";
 import Dropdown from "../components/Dropdown";
 
+import { uploadFile } from "../utils/api";
+
 function ImportPage() {
   const [file, setFile] = useState(null);
   const [importedColumns, setImportedColumns] = useState([]);
@@ -28,8 +30,11 @@ function ImportPage() {
 
   const onFileUpload = (e) => {
     const [uploadedFile] = e.target.files;
-    console.log(uploadedFile);
     setFile(uploadedFile);
+
+    uploadFile(uploadedFile).then((res) => {
+      console.log(res);
+    });
 
     // TODO: dosya sunucuya yollanacak
     setTimeout(() => {
@@ -151,7 +156,10 @@ function ImportPage() {
               {importedColumns.map((item, key) => {
                 const hasError = errors.includes(formQuestions[key]);
                 return (
-                  <div className="flex flex-col items-start gap-5 w-full">
+                  <div
+                    className="flex flex-col items-start gap-5 w-full"
+                    key={key}
+                  >
                     <div className="flex flex-row items-center gap-2.5 w-full">
                       <div className="flex flex-row items-start py-0.5 px-0 gap-2 w-full">
                         <Label value={formQuestions[key]} className="grow-1" />

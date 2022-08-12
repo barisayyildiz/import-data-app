@@ -10,7 +10,8 @@ import IconForm from "../assets/svg/IconForm";
 
 function FormPicker() {
   const { allForms, selectedFormId } = useSelector(selectForm);
-  const { title, total, updated_at, url } = allForms.find(
+  console.log(allForms);
+  const { title, count, updated_at, url } = allForms.find(
     (form) => form.id === selectedFormId
   );
 
@@ -18,10 +19,10 @@ function FormPicker() {
   const dispath = useDispatch();
 
   return (
-    <div className="bg-white border radius border-navy-100 flex justify-between px-4 py-2 cursor-pointer">
+    <div className="bg-white border radius border-navy-100 flex justify-between px-4 py-3 cursor-pointer">
       <div className="flex items-center gap-5">
         <IconForm />
-        <div className="flex flex-col gap-1.5">
+        <div className="flex flex-col">
           <div className="flex gap-1.5">
             <p className="font-medium color-navy-700">{title}</p>
             <a href={url} target="_blank">
@@ -29,7 +30,7 @@ function FormPicker() {
             </a>
           </div>
           <p className="color-navy-300 text-sm">
-            {total} submissions. Updated on {date}
+            {count} submissions. Updated on {date}
           </p>
         </div>
       </div>
