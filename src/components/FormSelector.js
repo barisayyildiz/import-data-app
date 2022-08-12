@@ -60,7 +60,7 @@ function FormSelector() {
   const filterForms = () => {
     if (query !== "") {
       const reg = new RegExp(query, "i");
-      return allForms.filter((form) => reg.test(form.name));
+      return allForms.filter((form) => reg.test(form.title));
     } else {
       return allForms;
     }
