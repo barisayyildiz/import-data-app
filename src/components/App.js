@@ -1,8 +1,5 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import { useSelector } from "react-redux";
-
-import { selectModal } from "../store/slices/modalSlice";
 
 import Heading from "./Heading";
 import Footer from "./Footer";
@@ -13,7 +10,6 @@ import ImportPage from "../pages/ImportPage";
 import SuccessPage from "../pages/SuccessPage";
 
 import FormSelector from "../components/FormSelector";
-import Dropdown from "../components/Dropdown";
 
 import "../styles/App.scss";
 import "@jotforminc/jotform.css";

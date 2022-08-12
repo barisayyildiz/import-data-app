@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef, useMemo } from "react";
-import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import debounce from "lodash.debounce";
 
@@ -101,8 +100,6 @@ function FormSelector() {
             <input
               ref={inputRef}
               onChange={debouncedChangeHandler}
-              // value={searched}
-              // onChange={(e) => setSearched(e.target.value)}
               style={{ backgroundColor: "#F3F3FE" }}
               className="nosubmit color-navy-300 radius bg-navy-25 w-full"
               placeholder="Search in forms"

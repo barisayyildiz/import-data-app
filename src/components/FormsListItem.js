@@ -1,10 +1,6 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import {
-  selectForm,
-  setSelectedForm,
-  setAllForms,
-} from "../store/slices/formSlice";
+import { selectForm } from "../store/slices/formSlice";
 
 import { formatDate } from "../utils";
 
@@ -15,13 +11,9 @@ function FormsListItem({
   selected,
   setSelected,
 }) {
-  const dispatch = useDispatch();
-  const { selectedForm } = useSelector(selectForm);
-
   const date = formatDate(updated_at);
 
   const isSelected = selected === id;
-  // const isSelected = selectedForm === id;
 
   const style = {
     backgroundColor: `${isSelected ? "#DBF1FF" : "#ffffff"}`,
@@ -34,12 +26,7 @@ function FormsListItem({
     padding: "16px 20px",
   };
   return (
-    <div
-      style={style}
-      className="unselectable"
-      // onClick={() => dispatch(setSelectedForm(id))}
-      onClick={() => setSelected(id)}
-    >
+    <div style={style} className="unselectable" onClick={() => setSelected(id)}>
       <div className="flex items-center gap-4">
         <IconForm />
         <div className="flex flex-col">

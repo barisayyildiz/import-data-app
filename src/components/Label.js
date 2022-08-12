@@ -1,7 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
 
-import ArrowIcon from "../assets/svg/IconArrow";
-
 function Label({ value }) {
   return (
     <label

@@ -22,10 +22,3 @@ export default configureStore({
   reducer: persistedReducer,
   devTools: process.env.NODE_ENV !== "production",
 });
-
-// export default configureStore({
-//   reducer: {
-//     form: formReducer,
-//     modal: modalReducer,
-//   },
-// });
