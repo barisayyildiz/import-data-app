@@ -195,7 +195,7 @@ function ImportPage() {
                 if (file) {
                   removeFile();
                 } else {
-                  window.location("/");
+                  window.location = "/";
                 }
               }}
             >

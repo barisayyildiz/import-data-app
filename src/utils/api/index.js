@@ -10,13 +10,14 @@ export const getEnabledForms = () => {
 };
 
 export const uploadFile = (file) => {
-  return axios.post(
-    `https://y-esen.jotform.dev/intern-api/import-api/file`,
-    {
-      file,
+  const config = {
+    method: "post",
+    url: "https://y-esen.jotform.dev/intern-api/import-api/file",
+    headers: {
+      Cookie: "apiKey=e2e97763b1aafa20c5d921764e60d4e5;",
+      apiKey: "e2e97763b1aafa20c5d921764e60d4e5",
     },
-    {
-      apiKey: getCookie("apiKey"),
-    }
-  );
+    data: file,
+  };
+  return axios(config);
 };
