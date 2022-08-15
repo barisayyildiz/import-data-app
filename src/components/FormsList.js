@@ -1,6 +1,6 @@
 import FormsListItem from "./FormsListItem";
 
-function FormsList({ forms, selected, setSelected }) {
+function FormsList({ forms, selected, setSelected, props }) {
   return (
     <div className="flex flex-col gap-4 w-full">
       {forms.map((form) => {
@@ -10,6 +10,7 @@ function FormsList({ forms, selected, setSelected }) {
             setSelected={setSelected}
             form={form}
             key={form.id}
+            {...props}
           />
         );
       })}

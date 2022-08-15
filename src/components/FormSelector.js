@@ -89,7 +89,11 @@ function FormSelector() {
             </h3>
           </div>
           <div>
-            <div onClick={handleClose} className="cursor-pointer">
+            <div
+              data-testid="modal_close"
+              onClick={handleClose}
+              className="cursor-pointer"
+            >
               <CloseIcon />
             </div>
           </div>
@@ -119,6 +123,7 @@ function FormSelector() {
           }}
         >
           <a
+            data-testid="modal_cancel"
             style={{
               backgroundColor: "#FAFAFC",
               border: "1px solid #ADB4D2",

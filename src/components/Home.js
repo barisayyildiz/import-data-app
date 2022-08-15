@@ -26,6 +26,7 @@ function Home() {
           <div className="flex flex-col items-center gap-10">
             <h3 className="text-2xl color-navy-300">{subHeader}</h3>
             <a
+              data-testid="import_submissions_button"
               onClick={() => dispatch(toggleModal())}
               className="flex color-white radius py-3 px-8 font-medium"
               style={{ backgroundColor: "#78BB07" }}

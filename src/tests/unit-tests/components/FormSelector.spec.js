@@ -53,8 +53,52 @@ describe("FormsSelector test cases", () => {
     const { store } = renderWithProviders(<FormSelector />, {
       preloadedState: initialState,
     });
-    const cancelBtn = screen.getByText(/cancel/i);
+    const cancelBtn = screen.getByTestId("modal_cancel");
     fireEvent.click(cancelBtn);
     expect(store.getState().modal.isOpen).toBe(false);
+  });
+
+  it("filtering works correctly", () => {
+    const initialState = {
+      modal: {
+        isOpen: true,
+      },
+      form: {
+        allForms: [
+          {
+            id: "#1",
+            title: "hazard detection",
+            updated_at: "2022-08-09 02:43:54",
+            count: "12",
+            url: "https://",
+          },
+          {
+            id: "#2",
+            title: "save transaction",
+            updated_at: "2022-08-09 02:43:54",
+            count: "12",
+            url: "https://",
+          },
+          {
+            id: "#3",
+            title: "buy concert tickets",
+            updated_at: "2022-08-09 02:43:54",
+            count: "12",
+            url: "https://",
+          },
+        ],
+        selectedForm: null,
+      },
+    };
+    const { store } = renderWithProviders(<FormSelector />, {
+      preloadedState: initialState,
+    });
+
+    const formList = screen.getAllByText(/updated on/i);
+    const inputField = screen.getByPlaceholderText(/search in forms/i);
+
+    expect(formList.length).toBe(3);
+    fireEvent.change(inputField, { target: { value: "save" } });
+    expect(formList.length).toBe(1);
   });
 });
