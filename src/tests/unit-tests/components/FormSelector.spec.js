@@ -9,49 +9,75 @@ import { createMockComponent } from "../../helpers";
 const mockStore = configureStore();
 
 describe("FormsSelector test cases", () => {
-  it("test", () => {
-    expect(1).toBe(1);
-  });
-  it("input field rendered", () => {
-    const initialState = {
-      modal: {
-        isOpen: true,
-      },
-      form: {
-        allForms: [],
-        selectedForm: null,
-      },
-    };
-    const store = mockStore(initialState);
-    render(
-      <Provider store={store}>
-        <FormSelector />
-      </Provider>
-    );
-    const inputField = screen.getByPlaceholderText(/search in forms/i);
-    expect(inputField).toBeInTheDocument();
-  });
+  it.todo("test");
 
-  it("input field has the correct value", () => {
-    const initialState = {
-      modal: {
-        isOpen: true,
-      },
-      form: {
-        allForms: [],
-        selectedForm: null,
-      },
-    };
-    const store = mockStore(initialState);
-    render(
-      <Provider store={store}>
-        <FormSelector />
-      </Provider>
-    );
-    const inputField = screen.getByPlaceholderText(/search in forms/i);
-    fireEvent.change(inputField, { target: { value: "testing..." } });
-    expect(inputField.value).toBe("testing...");
-  });
+  // it("input field rendered", () => {
+  //   const initialState = {
+  //     modal: {
+  //       isOpen: true,
+  //     },
+  //     form: {
+  //       allForms: [],
+  //       selectedForm: null,
+  //     },
+  //   };
+  //   const store = mockStore(initialState);
+  //   render(
+  //     <Provider store={store}>
+  //       <FormSelector />
+  //     </Provider>
+  //   );
+  //   const inputField = screen.getByPlaceholderText(/search in forms/i);
+  //   expect(inputField).toBeInTheDocument();
+  // });
+
+  // it("input field has the correct value", () => {
+  //   const initialState = {
+  //     modal: {
+  //       isOpen: true,
+  //     },
+  //     form: {
+  //       allForms: [],
+  //       selectedForm: null,
+  //     },
+  //   };
+  //   const store = mockStore(initialState);
+  //   render(
+  //     <Provider store={store}>
+  //       <FormSelector />
+  //     </Provider>
+  //   );
+  //   const inputField = screen.getByPlaceholderText(/search in forms/i);
+  //   fireEvent.change(inputField, { target: { value: "testing..." } });
+  //   expect(inputField.value).toBe("testing...");
+  // });
+
+  // it("modal is closed when close button is clicked", () => {
+  //   const initialState = {
+  //     modal: {
+  //       isOpen: true,
+  //     },
+  //     form: {
+  //       allForms: [],
+  //       selectedForm: null,
+  //     },
+  //   };
+  //   const store = mockStore(initialState);
+  //   render(
+  //     <Provider store={store}>
+  //       <FormSelector />
+  //     </Provider>
+  //   );
+
+  //   console.log(store.getState());
+  //   const cancelBtn = screen.getByText(/cancel/i);
+  //   store.dispatch({
+  //     type: "modal/closeModal",
+  //   });
+  //   fireEvent.click(cancelBtn);
+  //   console.log(store.getState());
+  //   // expect(screen.getByText(/Please select one of your forms to continue/i)).not.toBeInTheDocument()
+  // });
 });
 
 // describe("FormsSelector test cases", () => {
