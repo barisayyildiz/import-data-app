@@ -43,7 +43,6 @@ function FormSelector() {
     dispatch(setSelectedForm(selected));
   };
   const handleClose = () => {
-    console.log("handle close");
     dispatch(closeModal());
   };
 

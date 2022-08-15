@@ -1,10 +1,7 @@
-import { Provider } from "react-redux";
 import configureStore from "redux-mock-store";
 
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import FormsList from "../../../components/FormsList";
-
-import { createMockComponent } from "../../helpers";
 
 const mockStore = configureStore();
 
