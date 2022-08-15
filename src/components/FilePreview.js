@@ -8,6 +8,7 @@ import { sizeFormatter } from "../utils";
 function FilePreview({ name = "NameName.xls", size = 216, onRemove }) {
   return (
     <div
+      data-testid="file_preview"
       className="
 				flex flex-row items-center p-4 g-4 
 				border radius bg-navy-25 mx-auto my-0 border-navy-100"

@@ -9,6 +9,7 @@ function FileInput({ onFileUpload }) {
       className="border border-dashed radius border-navy-75 p-11"
     >
       <input
+        data-testid="file_input"
         type="file"
         id="file"
         multiple={false}
