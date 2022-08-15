@@ -20,6 +20,8 @@ specifiers:
   react-router: ^6.3.0
   react-router-dom: ^6.3.0
   react-scripts: 5.0.1
+  redux: ^4.2.0
+  redux-mock-store: ^1.5.4
   redux-persist: ^6.0.0
   sass: ^1.54.3
   scss: ^0.2.4
@@ -41,11 +43,13 @@ dependencies:
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   react-modal: 3.15.1_biqbaboplfbrettd7655fr4n2y
-  react-redux: 8.0.2_biqbaboplfbrettd7655fr4n2y
+  react-redux: 8.0.2_e42enmjmqb4imi3q3iaq2rrebm
   react-router: 6.3.0_react@18.2.0
   react-router-dom: 6.3.0_biqbaboplfbrettd7655fr4n2y
   react-scripts: 5.0.1_e4jfytgtfed3qz4la7mzka5yfu
-  redux-persist: 6.0.0_react@18.2.0
+  redux: 4.2.0
+  redux-mock-store: 1.5.4
+  redux-persist: 6.0.0_react@18.2.0+redux@4.2.0
   sass: 1.54.3
   scss: 0.2.4
   web-vitals: 2.1.4
@@ -2022,7 +2026,7 @@ packages:
     dependencies:
       immer: 9.0.15
       react: 18.2.0
-      react-redux: 8.0.2_biqbaboplfbrettd7655fr4n2y
+      react-redux: 8.0.2_e42enmjmqb4imi3q3iaq2rrebm
       redux: 4.2.0
       redux-thunk: 2.4.1_redux@4.2.0
       reselect: 4.1.6
@@ -7011,6 +7015,10 @@ packages:
     resolution: {integrity: sha512-FT1yDzDYEoYWhnSGnpE/4Kj1fLZkDFyqRb7fNt6FdYOSxlUWAtp42Eh6Wb0rGIv/m9Bgo7x4GhQbm5Ys4SG5ow==}
     dev: false
 
+  /lodash.isplainobject/4.0.6:
+    resolution: {integrity: sha512-oSXzaWypCMHkPC3NvBEaPHf0KsA5mvPrOPgQWDsbg8n7orZ290M0BmC/jgRZ4vcJ6DTAhjrsSYgdsW/F+MFOBA==}
+    dev: false
+
   /lodash.memoize/4.1.2:
     resolution: {integrity: sha512-t7j+NzmgnQzTAYXcsHYLgimltOV1MXHtlOWf6GjL9Kj8GK5FInw5JotxvbOs+IvV1/Dzo04/fCGfLVs7aXb4Ag==}
     dev: false
@@ -8889,7 +8897,7 @@ packages:
       warning: 4.0.3
     dev: false
 
-  /react-redux/8.0.2_biqbaboplfbrettd7655fr4n2y:
+  /react-redux/8.0.2_e42enmjmqb4imi3q3iaq2rrebm:
     resolution: {integrity: sha512-nBwiscMw3NoP59NFCXFf02f8xdo+vSHT/uZ1ldDwF7XaTpzm+Phk97VT4urYBl5TYAPNVaFm12UHAEyzkpNzRA==}
     peerDependencies:
       '@types/react': ^16.8 || ^17.0 || ^18.0
@@ -8917,6 +8925,7 @@ packages:
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
       react-is: 18.2.0
+      redux: 4.2.0
       use-sync-external-store: 1.2.0_react@18.2.0
     dev: false
 
@@ -9116,7 +9125,13 @@ packages:
       strip-indent: 3.0.0
     dev: false
 
-  /redux-persist/6.0.0_react@18.2.0:
+  /redux-mock-store/1.5.4:
+    resolution: {integrity: sha512-xmcA0O/tjCLXhh9Fuiq6pMrJCwFRaouA8436zcikdIpYWWCjU76CRk+i2bHx8EeiSiMGnB85/lZdU3wIJVXHTA==}
+    dependencies:
+      lodash.isplainobject: 4.0.6
+    dev: false
+
+  /redux-persist/6.0.0_react@18.2.0+redux@4.2.0:
     resolution: {integrity: sha512-71LLMbUq2r02ng2We9S215LtPu3fY0KgaGE0k8WRgl6RkqxtGfl7HUozz1Dftwsb0D/5mZ8dwAaPbtnzfvbEwQ==}
     peerDependencies:
       react: '>=16'
@@ -9126,6 +9141,7 @@ packages:
         optional: true
     dependencies:
       react: 18.2.0
+      redux: 4.2.0
     dev: false
 
   /redux-thunk/2.4.1_redux@4.2.0:

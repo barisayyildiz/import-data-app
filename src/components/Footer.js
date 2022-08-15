@@ -48,7 +48,7 @@ function Footer() {
           </ul>
         </div>
         <div className="mx-8 flex items-start">
-          <ul className="flex items-start gap-2">
+          <ul data-testid="footer_icons" className="flex items-start gap-2">
             <a>
               <FacebookIcon />
             </a>

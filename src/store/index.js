@@ -5,7 +5,7 @@ import { persistReducer } from "redux-persist";
 import formReducer from "./slices/formSlice";
 import modalReducer from "./slices/modalSlice";
 
-const reducers = combineReducers({
+export const reducers = combineReducers({
   form: formReducer,
   modal: modalReducer,
 });

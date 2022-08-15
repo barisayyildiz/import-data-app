@@ -1,6 +1,7 @@
-export default function IconJotformText() {
+export default function IconJotformText(props) {
   return (
     <svg
+      {...props}
       width="168"
       height="30"
       viewBox="0 0 168 30"

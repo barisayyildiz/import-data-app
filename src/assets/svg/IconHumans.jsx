@@ -1,6 +1,7 @@
-export default function IconHumans() {
+export default function IconHumans({ ...props }) {
   return (
     <svg
+      {...props}
       width="677"
       height="359"
       viewBox="0 0 677 359"

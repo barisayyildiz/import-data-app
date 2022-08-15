@@ -14,8 +14,11 @@ function Home() {
   const dispatch = useDispatch();
   return (
     <div>
-      <div className="flex flex-col items-center p-0 gap-10 mx-0 my-14">
-        <HumansIcon />
+      <div
+        data-testid="home_wrapper"
+        className="flex flex-col items-center p-0 gap-10 mx-0 my-14"
+      >
+        <HumansIcon data-testid="humans_icon" />
         <div className="flex flex-col items-center gap-4">
           <h1 className="text-7xl font-bold color-navy-700 font-circular">
             {header}
