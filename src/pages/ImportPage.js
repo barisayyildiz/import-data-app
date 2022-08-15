@@ -34,9 +34,9 @@ function ImportPage() {
     const [uploadedFile] = e.target.files;
     setFile(uploadedFile);
 
-    // uploadFile(uploadedFile).then((res) => {
-    //   console.log(res);
-    // });
+    uploadFile(uploadedFile).then((res) => {
+      console.log(res);
+    });
 
     // TODO: dosya sunucuya yollanacak
     setTimeout(() => {
@@ -126,7 +126,7 @@ function ImportPage() {
             Choose a file from your device
           </h3>
           {file === null ? (
-            <FileInput onFileUpload={onFileUpload} />
+            <FileInput data-testid="file_input" onFileUpload={onFileUpload} />
           ) : (
             <FilePreview
               name={file.name}

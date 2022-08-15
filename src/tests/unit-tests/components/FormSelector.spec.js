@@ -1,5 +1,6 @@
-import configureStore from "redux-mock-store";
-import { screen, fireEvent } from "@testing-library/react";
+import { screen, fireEvent, act } from "@testing-library/react";
+
+import userEvent from "@testing-library/user-event";
 
 import FormSelector from "../../../components/FormSelector";
 import { renderWithProviders } from "../../helpers";
@@ -40,6 +41,7 @@ describe("FormsSelector test cases", () => {
     expect(inputField.value).toBe("testing...");
   });
 
+  // FIXME: modal ın tam olarak kapanması için bir süre geçmesi gerekiyor
   it("modal is closed when close button is clicked", () => {
     const initialState = {
       modal: {
@@ -58,7 +60,8 @@ describe("FormsSelector test cases", () => {
     expect(store.getState().modal.isOpen).toBe(false);
   });
 
-  it("filtering works correctly", () => {
+  // FIXME: debounce dan kaynaklı bir sorun var
+  it("filtering works correctly", async () => {
     const initialState = {
       modal: {
         isOpen: true,
@@ -87,18 +90,26 @@ describe("FormsSelector test cases", () => {
             url: "https://",
           },
         ],
-        selectedForm: null,
+        selectedFormId: null,
       },
     };
     const { store } = renderWithProviders(<FormSelector />, {
       preloadedState: initialState,
     });
 
-    const formList = screen.getAllByText(/updated on/i);
+    let formList = screen.getAllByText(/updated on/i);
     const inputField = screen.getByPlaceholderText(/search in forms/i);
 
-    expect(formList.length).toBe(3);
-    fireEvent.change(inputField, { target: { value: "save" } });
+    expect(formList.length).toBe(4);
+
+    // fireEvent.change(inputField, { target: { value: "save" } });
+    userEvent.paste(inputField, "save");
+
+    console.log(inputField.value);
+
+    formList = screen.getAllByText(/updated on/i);
+    formList.forEach((f) => console.log(f.nodeType));
+
     expect(formList.length).toBe(1);
   });
 });

@@ -2,13 +2,14 @@ import React from "react";
 
 import CloudIcon from "../assets/svg/IconCloud.jsx";
 
-function FileInput({ onFileUpload }) {
+function FileInput({ onFileUpload, ...props }) {
   return (
     <div
       style={{ width: "100%", backgroundColor: "rgba(243, 243, 254, 0.3)" }}
       className="border border-dashed radius border-navy-75 p-11"
     >
       <input
+        {...props}
         data-testid="file_input"
         type="file"
         id="file"
