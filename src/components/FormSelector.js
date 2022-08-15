@@ -14,7 +14,7 @@ import { selectModal, closeModal } from "../store/slices/modalSlice";
 import "../styles/FormSelector.scss";
 import FormsList from "./FormsList";
 
-import Modal from "./Modal";
+import MyModal from "./Modal";
 import CloseIcon from "../assets/svg/IconClose";
 
 import { mockForms } from "../constants/index";
@@ -26,23 +26,14 @@ function FormSelector() {
 
   const inputRef = useRef(null);
 
-  // TODO: API'ye istek atılarak getirilecek
   useEffect(() => {
-    console.log("inside use effect");
-
     getEnabledForms()
       .then(({ data: { content } }) => {
-        console.log(content);
         dispatch(setAllForms(content));
-        // dispatch(setAllForms(content))
       })
       .catch((e) => {
         console.error(e);
       });
-
-    // setTimeout(() => {
-    //   dispatch(setAllForms(mockForms));
-    // }, 1000);
   }, []);
 
   const [query, setQuery] = useState("");
@@ -75,8 +66,18 @@ function FormSelector() {
     []
   );
 
+  const props = {
+    isOpen,
+    // ariaHideApp: false,
+    ariaHideApp: document.getElementById("root"),
+    // ariaHideApp: document.getElementsByClassName("App")[0],
+    appElement: document.getElementsByClassName("App")[0],
+    onRequestClose: handleClose,
+    contentLabel: "Modal",
+  };
+
   return (
-    <Modal isOpen={isOpen} ariaHideApp={false} onRequestClose={handleClose}>
+    <MyModal props={props}>
       <div className="flex flex-col gap-4 modal-content-wrapper">
         <div
           className="flex flex-row justify-start gap-4 border-b"
@@ -89,7 +90,6 @@ function FormSelector() {
             </h3>
           </div>
           <div>
-            {/* TODO: clickable yapılacak */}
             <div onClick={handleClose} className="cursor-pointer">
               <CloseIcon />
             </div>
@@ -107,7 +107,6 @@ function FormSelector() {
             <FormsList
               selected={selected}
               setSelected={setSelected}
-              // forms={allForms}
               forms={filteredForms}
             />
           </div>
@@ -144,7 +143,7 @@ function FormSelector() {
           </a>
         </div>
       </div>
-    </Modal>
+    </MyModal>
   );
 }
 

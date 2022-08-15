@@ -33,6 +33,11 @@ describe("Should render home page", () => {
     expect(humansIcon).toBeInTheDocument();
   });
 
+  it("Should render import submissions button", () => {
+    render(createMockComponent(<Home />));
+    expect(screen.getByText(/import submissions now/i));
+  });
+
   // TODO: Butona basıldığında modal açılıyor mu (integration test...)
 
   // it("should open modal when button is clicked", () => {

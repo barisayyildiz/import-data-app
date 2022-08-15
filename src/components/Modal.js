@@ -3,11 +3,9 @@ import Modal from "react-modal";
 
 import "../styles/Modal.scss";
 
-export default ({ children, isOpen, onRequestClose }) => (
+export default ({ children, isOpen, onRequestClose, props }) => (
   <Modal
-    isOpen={isOpen}
-    onRequestClose={onRequestClose}
-    contentLabel="Modal"
+    {...props}
     className={{
       base: "modal-base",
       afterOpen: "modal-base_after-open",
