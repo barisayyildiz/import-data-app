@@ -1,4 +1,4 @@
-import { screen, fireEvent, act } from "@testing-library/react";
+import { screen, fireEvent, act, waitFor } from "@testing-library/react";
 
 import userEvent from "@testing-library/user-event";
 
@@ -41,7 +41,6 @@ describe("FormsSelector test cases", () => {
     expect(inputField.value).toBe("testing...");
   });
 
-  // FIXME: modal ın tam olarak kapanması için bir süre geçmesi gerekiyor
   it("modal is closed when close button is clicked", () => {
     const initialState = {
       modal: {
@@ -61,7 +60,7 @@ describe("FormsSelector test cases", () => {
   });
 
   // FIXME: debounce dan kaynaklı bir sorun var
-  it.skip("filtering works correctly", async () => {
+  it("filtering works correctly", async () => {
     const initialState = {
       modal: {
         isOpen: true,
@@ -100,15 +99,17 @@ describe("FormsSelector test cases", () => {
     let formList = screen.getAllByText(/updated on/i);
     const inputField = screen.getByPlaceholderText(/search in forms/i);
 
-    expect(formList.length).toBe(4);
+    expect(formList.length).toBe(3);
 
     // fireEvent.change(inputField, { target: { value: "save" } });
-    userEvent.paste(inputField, "save");
+
+    await waitFor(() => {
+      userEvent.paste(inputField, "save");
+    });
 
     console.log(inputField.value);
 
-    formList = screen.getAllByText(/updated on/i);
-    formList.forEach((f) => console.log(f.nodeType));
+    formList = await screen.findAllByText(/updated on/i);
 
     expect(formList.length).toBe(1);
   });

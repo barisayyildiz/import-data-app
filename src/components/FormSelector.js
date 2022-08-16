@@ -15,6 +15,7 @@ import "../styles/FormSelector.scss";
 import FormsList from "./FormsList";
 
 import MyModal from "./Modal";
+import Modal from "react-modal";
 import CloseIcon from "../assets/svg/IconClose";
 
 function FormSelector() {
@@ -38,6 +39,7 @@ function FormSelector() {
   const [selected, setSelected] = useState(null);
 
   const handleSubmit = () => {
+    console.log("handle submit");
     dispatch(setSelectedForm(selected));
   };
   const handleClose = () => {
