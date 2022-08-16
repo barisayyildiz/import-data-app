@@ -29,6 +29,4 @@ describe("Should render home page", () => {
     renderWithProviders(<Home />);
     expect(screen.getByText(/import submissions now/i));
   });
-
-  // TODO: Butona basıldığında modal açılıyor mu (integration test...)
 });

@@ -10,7 +10,6 @@ import IconForm from "../assets/svg/IconForm";
 
 function FormPicker() {
   const { allForms, selectedFormId } = useSelector(selectForm);
-  console.log(allForms);
   const { title, count, updated_at, url } = allForms.find(
     (form) => form.id === selectedFormId
   );

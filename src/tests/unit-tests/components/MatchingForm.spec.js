@@ -36,6 +36,4 @@ describe("MatchingForm unit tests", () => {
     const inputs = document.querySelectorAll("select");
     expect(inputs.length).toBe(formQuestions.length);
   });
-
-  // TODO: continue button, validation control
 });

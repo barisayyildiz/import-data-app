@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 
@@ -12,12 +13,13 @@ import Dropdown from "../components/Dropdown";
 
 import MatchingForm from "../components/MatchingForm";
 
-import { uploadFile } from "../utils/api";
+import { uploadFile, getFormQuestions } from "../utils/api";
 
 function ImportPage() {
   const [file, setFile] = useState(null);
   const [importedColumns, setImportedColumns] = useState([]);
   const [errors, setErrors] = useState([]);
+  const [formQuestions, setFormQuestions] = useState([]);
 
   const { selectedFormId } = useSelector(selectForm);
 
@@ -25,40 +27,44 @@ function ImportPage() {
     window.location = "/";
   }
 
-  // TODO: form questions, formu seçtikten sonra redux'a kaydedilecek...
-  const formQuestions = ["Name", "Adress", "Work"];
-
   const { header, subHeader } = homePageTexts;
 
-  const onFileUpload = (e) => {
+  const onFileUpload = async (e) => {
     const [uploadedFile] = e.target.files;
     setFile(uploadedFile);
 
-    uploadFile(uploadedFile)
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
+    let questions = [];
+    try {
+      let {
+        data: { content: formContent },
+      } = await getFormQuestions(selectedFormId);
+      questions = Object.values(formContent);
+      setFormQuestions(questions);
+    } catch (error) {
+      console.log(error);
+    }
 
-    // TODO: dosya sunucuya yollanacak
-    setTimeout(() => {
-      setImportedColumns([
-        {
-          value: "#1",
-          label: "name",
-        },
-        {
-          value: "#2",
-          label: "Your Adress",
-        },
-        {
-          value: "#3",
-          label: "Work",
-        },
-      ]);
-    }, 1000);
+    console.log(questions);
+
+    try {
+      const data = new FormData();
+      data.append("file", uploadedFile);
+      let {
+        data: { content: fileContent },
+      } = await uploadFile(data);
+      const labels = Object.values(fileContent);
+      let cols = [];
+      labels.forEach((l, index) => {
+        cols.push({
+          value: questions[index],
+          label: l,
+        });
+      });
+      console.log(cols);
+      setImportedColumns(cols);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const removeFile = () => {
@@ -70,7 +76,7 @@ function ImportPage() {
   const isValidForm = (form) => {
     let tempErrors = [];
     formQuestions.forEach((label) => {
-      if (!form[label].value) {
+      if (!form[label]?.value) {
         tempErrors.push(label);
       }
     });
@@ -84,9 +90,12 @@ function ImportPage() {
   const onSubmit = (e) => {
     e.preventDefault();
 
+    console.log("inside on submit");
     if (!isValidForm(e.target)) {
       return;
     }
+
+    console.log("form is valid");
 
     let formData = new FormData();
     formData.append("file", file);

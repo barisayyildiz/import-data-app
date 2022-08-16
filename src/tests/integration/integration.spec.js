@@ -14,6 +14,7 @@ describe("Integration tests", () => {
     expect(screen.getByText("Select Forms")).toBeInTheDocument();
   });
 
+  // FIXME: modal doesn't get closed immediately
   it.skip("modal gets closed when cancel button is clicked", () => {
     const initialState = {
       modal: {

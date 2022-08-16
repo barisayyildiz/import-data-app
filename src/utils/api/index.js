@@ -9,16 +9,29 @@ export const getEnabledForms = () => {
   );
 };
 
-export const uploadFile = (file) => {
+export const uploadFile = (data) => {
   const apiKey = getCookie("apiKey");
   const config = {
     method: "post",
     url: "https://y-esen.jotform.dev/intern-api/import-api/file",
+    withCredentials: false,
     headers: {
-      Cookie: `apiKey=${apiKey};`,
-      apiKey: `${apiKey}`,
+      apiKey,
     },
-    data: file,
+    data,
+  };
+  return axios(config);
+};
+
+export const getFormQuestions = (formID) => {
+  const apiKey = getCookie("apiKey");
+  const config = {
+    method: "get",
+    url: `https://y-esen.jotform.dev/intern-api/import-api/question?formID=${formID}`,
+    withCredentials: false,
+    headers: {
+      apiKey,
+    },
   };
   return axios(config);
 };
