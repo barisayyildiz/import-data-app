@@ -7,7 +7,7 @@ function FileInput({ onFileUpload, ...props }) {
   return (
     <div
       style={{ width: "100%", backgroundColor: "rgba(243, 243, 254, 0.3)" }}
-      className="border border-dashed radius border-navy-75 p-11"
+      className="border border-dashed radius border-navy-75"
       onDrop={(e) => {
         e.preventDefault();
         e.persist();
@@ -37,7 +37,7 @@ function FileInput({ onFileUpload, ...props }) {
         hidden
       ></input>
       <label htmlFor="file">
-        <div className="flex flex-col items-center gap-4 cursor-pointer">
+        <div className="flex flex-col items-center gap-4 cursor-pointer p-11">
           <CloudIcon />
           <div className="flex flex-col items-center gap-2">
             <p className="font-medium text-uppercase color-navy-700">
