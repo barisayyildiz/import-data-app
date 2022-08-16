@@ -34,9 +34,13 @@ function ImportPage() {
     const [uploadedFile] = e.target.files;
     setFile(uploadedFile);
 
-    uploadFile(uploadedFile).then((res) => {
-      console.log(res);
-    });
+    uploadFile(uploadedFile)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
 
     // TODO: dosya sunucuya yollanacak
     setTimeout(() => {
