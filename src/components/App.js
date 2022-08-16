@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import "@jotforminc/jotform.css";
 
 import Heading from "./Heading";
 import Footer from "./Footer";
@@ -9,10 +10,10 @@ import Home from "./Home";
 import ImportPage from "../pages/ImportPage";
 import SuccessPage from "../pages/SuccessPage";
 
+// Modal
 import FormSelector from "../components/FormSelector";
 
 import "../styles/App.scss";
-import "@jotforminc/jotform.css";
 
 import { getCookie, setCookie } from "../utils";
 

@@ -1,15 +1,10 @@
-import axios from "axios";
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-
 import { selectForm } from "../store/slices/formSlice";
-
 import { homePageTexts } from "../constants";
 import FormPicker from "../components/FormPicker";
 import FileInput from "../components/FileInput";
 import FilePreview from "../components/FilePreview";
-import Label from "../components/Label";
-import Dropdown from "../components/Dropdown";
 
 import MatchingForm from "../components/MatchingForm";
 
@@ -29,8 +24,7 @@ function ImportPage() {
 
   const { header, subHeader } = homePageTexts;
 
-  const onFileUpload = async (e) => {
-    const [uploadedFile] = e.target.files;
+  const onFileUpload = async (uploadedFile) => {
     setFile(uploadedFile);
 
     let questions = [];
@@ -90,15 +84,13 @@ function ImportPage() {
   const onSubmit = (e) => {
     e.preventDefault();
 
-    console.log("inside on submit");
     if (!isValidForm(e.target)) {
       return;
     }
 
-    console.log("form is valid");
-
     let formData = new FormData();
     formData.append("file", file);
+    formData.append("formID", selectedFormId);
 
     formQuestions.forEach((label) => {
       console.log(

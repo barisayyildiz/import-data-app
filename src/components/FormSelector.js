@@ -17,8 +17,6 @@ import FormsList from "./FormsList";
 import MyModal from "./Modal";
 import CloseIcon from "../assets/svg/IconClose";
 
-import { mockForms } from "../constants/index";
-
 function FormSelector() {
   const dispatch = useDispatch();
   const { allForms, selectedForm } = useSelector(selectForm);

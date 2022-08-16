@@ -1,12 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 
 import CloudIcon from "../assets/svg/IconCloud.jsx";
 
 function FileInput({ onFileUpload, ...props }) {
+  const [over, setOver] = useState(false);
   return (
     <div
       style={{ width: "100%", backgroundColor: "rgba(243, 243, 254, 0.3)" }}
       className="border border-dashed radius border-navy-75 p-11"
+      onDrop={(e) => {
+        e.preventDefault();
+        e.persist();
+        onFileUpload(e.dataTransfer.files[0]);
+        setOver(false);
+      }}
+      onDragOver={(e) => {
+        e.preventDefault();
+        setOver(true);
+      }}
+      onDragLeave={(e) => {
+        e.preventDefault();
+        setOver(false);
+      }}
     >
       <input
         {...props}
@@ -14,7 +29,11 @@ function FileInput({ onFileUpload, ...props }) {
         type="file"
         id="file"
         multiple={false}
-        onChange={onFileUpload}
+        onChange={({
+          target: {
+            files: [uploadedFile],
+          },
+        }) => onFileUpload(uploadedFile)}
         hidden
       ></input>
       <label htmlFor="file">
