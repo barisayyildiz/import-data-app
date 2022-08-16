@@ -17,6 +17,7 @@ export default ({ children, isOpen, onRequestClose, props }) => (
       beforeClose: "overlay-base_before-close",
     }}
     shouldCloseOnOverlayClick={true}
+    closeTimeoutMS={200}
   >
     {children}
   </Modal>
