@@ -27,6 +27,4 @@ describe("FormPicker unit tests", () => {
     });
     expect(screen.getByText("title1")).toBeInTheDocument();
   });
-
-  // TODO: Change forma tıklandığında modal açılıyor
 });

@@ -11,5 +11,17 @@ describe("FilePreview unit tests", () => {
     expect(screen.getByText("testfilename.csv")).toBeInTheDocument();
   });
 
-  // TODO: removed when remove button clicked
+  it("onRemove called when delete button is clicked", () => {
+    const onRemoveMock = jest.fn();
+    renderWithProviders(
+      <FilePreview name={"testfilename.csv"} onRemove={onRemoveMock} />
+    );
+
+    let wrapper = screen.getByTestId("file_preview");
+    let deleteIcon = screen.getByTestId("file_preview_delete");
+    expect(wrapper).toBeInTheDocument();
+
+    fireEvent.click(deleteIcon);
+    expect(onRemoveMock).toHaveBeenCalled();
+  });
 });

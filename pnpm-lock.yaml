@@ -25,6 +25,7 @@ specifiers:
   redux-persist: ^6.0.0
   sass: ^1.54.3
   scss: ^0.2.4
+  string-similarity: ^4.0.4
   web-vitals: ^2.1.4
 
 dependencies:
@@ -52,6 +53,7 @@ dependencies:
   redux-persist: 6.0.0_react@18.2.0+redux@4.2.0
   sass: 1.54.3
   scss: 0.2.4
+  string-similarity: 4.0.4
   web-vitals: 2.1.4
 
 packages:
@@ -9872,6 +9874,10 @@ packages:
 
   /string-natural-compare/3.0.1:
     resolution: {integrity: sha512-n3sPwynL1nwKi3WJ6AIsClwBMa0zTi54fn2oLU6ndfTSIO05xaznjSf15PcBZU6FNWbmN5Q6cxT4V5hGvB4taw==}
+    dev: false
+
+  /string-similarity/4.0.4:
+    resolution: {integrity: sha512-/q/8Q4Bl4ZKAPjj8WerIBJWALKkaPRfrvhfF8k/B23i4nzrlRj2/go1m90In7nG/3XDSbOo0+pu6RvCTM9RGMQ==}
     dev: false
 
   /string-width/4.2.3:

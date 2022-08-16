@@ -1,6 +1,8 @@
 import Label from "./Label";
 import Dropdown from "./Dropdown";
 
+import { returnBestMatch } from "../utils";
+
 export default function MatchingForm({
   onSubmit,
   importedColumns,
@@ -25,18 +27,20 @@ export default function MatchingForm({
           </div>
         </div>
       </div>
-      {importedColumns.map((item, key) => {
+      {formQuestions.map((question, key) => {
+        const match = returnBestMatch(question, importedColumns);
         const hasError = errors.includes(formQuestions[key]);
         return (
           <div className="flex flex-col items-start gap-5 w-full" key={key}>
             <div className="flex flex-row items-center gap-2.5 w-full">
               <div className="flex flex-row items-start py-0.5 px-0 gap-2 w-full">
-                <Label value={formQuestions[key]} className="grow-1" />
+                <Label value={question} className="grow-1" />
                 <div className="w-full flex flex-col gap-2.5">
                   <Dropdown
                     className="grow-1"
                     options={importedColumns}
-                    id={formQuestions[key]}
+                    name={question}
+                    match={match}
                   />
                   {/* validation */}
                   <p

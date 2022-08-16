@@ -9,6 +9,4 @@ describe("Success page unit tests", () => {
     expect(screen.getByText(/import more data/i));
     expect(screen.getByText(/go to jotform tables/i));
   });
-
-  // TODO: Butonlar test edilecek
 });

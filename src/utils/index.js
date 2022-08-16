@@ -1,3 +1,5 @@
+import stringSimilarity from "string-similarity";
+
 export const sizeFormatter = (size) => {
   // byte cinsinden dosya boyutu alır ve formatlar
   const units = ["B", "KB", "MB", "GB"];
@@ -41,4 +43,12 @@ export const setCookie = (name, value, days) => {
     expires = `; expires=${date.toUTCString()}`;
   }
   document.cookie = `${name}=${value || ""}${expires}; path=/`;
+};
+
+export const returnBestMatch = (main, target) => {
+  const { bestMatch } = stringSimilarity.findBestMatch(main, target);
+  if (bestMatch.rating >= 0.5) {
+    return bestMatch.target;
+  }
+  return null;
 };

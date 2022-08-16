@@ -38,8 +38,6 @@ function ImportPage() {
       console.log(error);
     }
 
-    console.log(questions);
-
     try {
       const data = new FormData();
       data.append("file", uploadedFile);
@@ -47,15 +45,7 @@ function ImportPage() {
         data: { content: fileContent },
       } = await uploadFile(data);
       const labels = Object.values(fileContent);
-      let cols = [];
-      labels.forEach((l, index) => {
-        cols.push({
-          value: questions[index],
-          label: l,
-        });
-      });
-      console.log(cols);
-      setImportedColumns(cols);
+      setImportedColumns(labels);
     } catch (error) {
       console.log(error);
     }
@@ -94,7 +84,7 @@ function ImportPage() {
 
     formQuestions.forEach((label) => {
       console.log(
-        e.target[label],
+        e.target[label].name,
         e.target[label].value,
         e.target[label].value === ""
       );

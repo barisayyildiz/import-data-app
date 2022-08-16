@@ -25,6 +25,7 @@ function FilePreview({ name = "NameName.xls", size = 216, onRemove }) {
         className="outline-button order-last 
 				grow-0 flex gap-1 p-2.5 bg-white border-gray-75 border radius cursor-pointer"
         onClick={onRemove}
+        data-testid="file_preview_delete"
       >
         <DeleteIcon />
       </div>
