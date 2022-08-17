@@ -22,7 +22,7 @@ function App() {
     setCookie("apiKey", process.env.REACT_APP_API_KEY);
   }
   return (
-    <div className="App">
+    <div className="App font-circular">
       <FormSelector />
       <Router>
         <Heading />

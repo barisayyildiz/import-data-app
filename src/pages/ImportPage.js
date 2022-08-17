@@ -102,7 +102,7 @@ function ImportPage() {
         <h1 className="text-4xl font-bold color-navy-700 font-circular">
           {header}
         </h1>
-        <h3 className="text-md color-navy-300">{subHeader}</h3>
+        <h3 className="text-xl color-navy-300">{subHeader}</h3>
       </div>
       <FormPicker />
       <div

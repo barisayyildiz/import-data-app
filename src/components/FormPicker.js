@@ -23,7 +23,7 @@ function FormPicker() {
         <IconForm />
         <div className="flex flex-col">
           <div className="flex gap-1.5">
-            <p className="font-medium color-navy-700">{title}</p>
+            <p className="font-semibold color-navy-700">{title}</p>
             <a href={url} target="_blank">
               <IconLink />
             </a>
@@ -35,7 +35,7 @@ function FormPicker() {
       </div>
       <button
         onClick={() => dispath(toggleModal())}
-        className="bg-blue-400 radius color-white px-4 py-3"
+        className="bg-blue-400 font-medium radius color-white px-4 py-3"
       >
         Change Form
       </button>
