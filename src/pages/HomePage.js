@@ -3,6 +3,9 @@ import { useDispatch } from "react-redux";
 import { homePageTexts } from "../constants";
 import { toggleModal, toggleAuthModal } from "../store/slices/modalSlice.js";
 import Steps from "../components/Steps.js";
+import { getCookie } from "../utils/index.js";
+
+const apiKey = getCookie("apiKey");
 
 function HomePage() {
   const {
@@ -27,8 +30,13 @@ function HomePage() {
             <h3 className="text-2xl color-navy-300">{subHeader}</h3>
             <a
               data-testid="import_submissions_button"
-              // onClick={() => dispatch(toggleModal())}
-              onClick={() => dispatch(toggleAuthModal())}
+              onClick={() => {
+                if (apiKey) {
+                  dispatch(toggleModal());
+                } else {
+                  dispatch(toggleAuthModal());
+                }
+              }}
               className="flex color-white radius py-3 px-8 font-medium"
               style={{ backgroundColor: "#78BB07" }}
             >

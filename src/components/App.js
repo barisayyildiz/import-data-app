@@ -19,9 +19,6 @@ import "../styles/App.scss";
 import { getCookie, setCookie } from "../utils";
 
 function App() {
-  if (!getCookie("apiKey")) {
-    setCookie("apiKey", process.env.REACT_APP_API_KEY);
-  }
   return (
     <div className="App font-circular">
       <FormSelector />

@@ -17,6 +17,9 @@ import FormsList from "./FormsList";
 import MyModal from "./Modal";
 import Modal from "react-modal";
 import CloseIcon from "../assets/svg/IconClose";
+import { getCookie } from "../utils";
+
+const apiKey = getCookie("apiKey");
 
 function FormSelector() {
   const dispatch = useDispatch();
@@ -26,14 +29,22 @@ function FormSelector() {
   const inputRef = useRef(null);
 
   useEffect(() => {
+    if (!apiKey) {
+      return;
+    }
     getEnabledForms()
-      .then(({ data: { content } }) => {
-        dispatch(setAllForms(content));
+      .then(({ data }) => {
+        // status code her durumda 200 dönüyor
+        // bu nedenle responseCode'a bakarak kontrol yaptım
+        if (data.responseCode !== 200) {
+          throw data.message;
+        }
+        dispatch(setAllForms(data.content));
       })
       .catch((e) => {
         console.error(e);
       });
-  }, []);
+  }, [apiKey]);
 
   const [query, setQuery] = useState("");
   const [selected, setSelected] = useState(null);

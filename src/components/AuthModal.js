@@ -1,6 +1,13 @@
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { selectModal, closeAuthModal } from "../store/slices/modalSlice";
+import {
+  selectModal,
+  closeAuthModal,
+  toggleModal,
+} from "../store/slices/modalSlice";
 import MyModal from "../components/Modal";
+
+import { setCookie } from "../utils";
 
 import "../styles/AuthModal.scss";
 
@@ -11,6 +18,26 @@ export default function AuthModal() {
   const handleClose = () => {
     dispatch(closeAuthModal());
   };
+
+  useEffect(() => {
+    const handleMessage = (e) => {
+      if (e.origin !== "https://www.jotform.com") {
+        return;
+      }
+      const data = e.data;
+      if (!data) {
+        handleClose();
+      } else {
+        const apiKey = data.split(":")[1];
+        setCookie("apiKey", apiKey);
+        handleClose();
+        dispatch(toggleModal());
+      }
+    };
+    window.addEventListener("message", handleMessage);
+
+    return () => window.removeEventListener("message", handleMessage);
+  }, []);
 
   const props = {
     isOpen: isAuthOpen,
