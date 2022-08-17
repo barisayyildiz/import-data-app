@@ -2,9 +2,9 @@ import HumansIcon from "../assets/svg/IconHumans.jsx";
 import { useDispatch } from "react-redux";
 import { homePageTexts } from "../constants";
 import { toggleModal } from "../store/slices/modalSlice.js";
-import Steps from "./Steps.js";
+import Steps from "../components/Steps.js";
 
-function Home() {
+function HomePage() {
   const {
     header,
     subHeader,
@@ -41,4 +41,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default HomePage;

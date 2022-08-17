@@ -6,7 +6,7 @@ import Heading from "./Heading";
 import Footer from "./Footer";
 
 // Pages
-import Home from "./Home";
+import HomePage from "../pages/HomePage";
 import ImportPage from "../pages/ImportPage";
 import SuccessPage from "../pages/SuccessPage";
 
@@ -27,7 +27,7 @@ function App() {
       <Router>
         <Heading />
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<HomePage />} />
           <Route path="/import" element={<ImportPage />}></Route>
           <Route path="/success" element={<SuccessPage />}></Route>
         </Routes>
