@@ -5,7 +5,6 @@ import "../styles/Modal.scss";
 
 export default ({ children, isOpen, onRequestClose, props }) => (
   <Modal
-    {...props}
     className={{
       base: "modal-base",
       afterOpen: "modal-base_after-open",
@@ -18,6 +17,7 @@ export default ({ children, isOpen, onRequestClose, props }) => (
     }}
     shouldCloseOnOverlayClick={true}
     closeTimeoutMS={200}
+    {...props}
   >
     {children}
   </Modal>

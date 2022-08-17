@@ -7,8 +7,9 @@ export default function MatchingForm({
   onSubmit,
   importedColumns,
   formQuestions,
-  errors,
 }) {
+  console.log(formQuestions);
+  console.log(importedColumns);
   return (
     <form
       id="form1"
@@ -27,29 +28,23 @@ export default function MatchingForm({
           </div>
         </div>
       </div>
-      {formQuestions.map((question, key) => {
-        const match = returnBestMatch(question, importedColumns);
-        const hasError = errors.includes(formQuestions[key]);
+      {Object.keys(formQuestions).map((questionKey, index) => {
+        const match = returnBestMatch(
+          formQuestions[questionKey],
+          Object.values(importedColumns)
+        );
         return (
-          <div className="flex flex-col items-start gap-5 w-full" key={key}>
+          <div className="flex flex-col items-start gap-5 w-full" key={index}>
             <div className="flex flex-row items-center gap-2.5 w-full">
               <div className="flex flex-row items-start py-0.5 px-0 gap-2 w-full">
-                <Label value={question} className="grow-1" />
+                <Label value={formQuestions[questionKey]} className="grow-1" />
                 <div className="w-full flex flex-col gap-2.5">
                   <Dropdown
                     className="grow-1"
                     options={importedColumns}
-                    name={question}
+                    name={questionKey}
                     match={match}
                   />
-                  {/* validation */}
-                  <p
-                    className={`${
-                      hasError ? "color-red-400 font-medium" : "hidden"
-                    }`}
-                  >
-                    {formQuestions[key]} should be selected
-                  </p>
                 </div>
               </div>
             </div>

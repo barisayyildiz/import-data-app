@@ -1,7 +1,7 @@
 import HumansIcon from "../assets/svg/IconHumans.jsx";
 import { useDispatch } from "react-redux";
 import { homePageTexts } from "../constants";
-import { toggleModal } from "../store/slices/modalSlice.js";
+import { toggleModal, toggleAuthModal } from "../store/slices/modalSlice.js";
 import Steps from "../components/Steps.js";
 
 function HomePage() {
@@ -27,7 +27,8 @@ function HomePage() {
             <h3 className="text-2xl color-navy-300">{subHeader}</h3>
             <a
               data-testid="import_submissions_button"
-              onClick={() => dispatch(toggleModal())}
+              // onClick={() => dispatch(toggleModal())}
+              onClick={() => dispatch(toggleAuthModal())}
               className="flex color-white radius py-3 px-8 font-medium"
               style={{ backgroundColor: "#78BB07" }}
             >

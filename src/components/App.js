@@ -12,6 +12,7 @@ import SuccessPage from "../pages/SuccessPage";
 
 // Modal
 import FormSelector from "../components/FormSelector";
+import AuthModal from "../components/AuthModal";
 
 import "../styles/App.scss";
 
@@ -33,6 +34,7 @@ function App() {
         </Routes>
         <Footer />
       </Router>
+      <AuthModal />
     </div>
   );
 }

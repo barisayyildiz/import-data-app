@@ -12,9 +12,8 @@ import { uploadFile, getFormQuestions } from "../utils/api";
 
 function ImportPage() {
   const [file, setFile] = useState(null);
-  const [importedColumns, setImportedColumns] = useState([]);
-  const [errors, setErrors] = useState([]);
-  const [formQuestions, setFormQuestions] = useState([]);
+  const [importedColumns, setImportedColumns] = useState(null);
+  const [formQuestions, setFormQuestions] = useState(null);
 
   const { selectedFormId } = useSelector(selectForm);
 
@@ -27,16 +26,22 @@ function ImportPage() {
   const onFileUpload = async (uploadedFile) => {
     setFile(uploadedFile);
 
+    console.log("on file upload");
+
     let questions = [];
     try {
       let {
         data: { content: formContent },
       } = await getFormQuestions(selectedFormId);
-      questions = Object.values(formContent);
-      setFormQuestions(questions);
+      // questions = Object.values(formContent);
+      // setFormQuestions(questions);
+      console.log(formContent);
+      setFormQuestions(formContent);
     } catch (error) {
       console.log(error);
     }
+
+    console.log("onfile upload 2");
 
     try {
       const data = new FormData();
@@ -44,31 +49,20 @@ function ImportPage() {
       let {
         data: { content: fileContent },
       } = await uploadFile(data);
-      const labels = Object.values(fileContent);
-      setImportedColumns(labels);
+      // const labels = Object.values(fileContent);
+      // setImportedColumns(labels);
+      console.log(fileContent);
+      setImportedColumns(fileContent);
     } catch (error) {
       console.log(error);
     }
+
+    console.log("onfile upload 3");
   };
 
   const removeFile = () => {
-    setErrors([]);
     setFile(null);
     setImportedColumns([]);
-  };
-
-  const isValidForm = (form) => {
-    let tempErrors = [];
-    formQuestions.forEach((label) => {
-      if (!form[label]?.value) {
-        tempErrors.push(label);
-      }
-    });
-    setErrors(tempErrors);
-    if (tempErrors.length > 0) {
-      return false;
-    }
-    return true;
   };
 
   const onSubmit = (e) => {
@@ -78,14 +72,29 @@ function ImportPage() {
     formData.append("file", file);
     formData.append("formID", selectedFormId);
 
-    formQuestions.forEach((label) => {
-      console.log(
-        e.target[label].name,
-        e.target[label].value,
-        e.target[label].value === ""
-      );
-      formData.append(label, e.target[label].value);
+    console.log(formQuestions);
+    console.log(importedColumns);
+
+    Object.keys(formQuestions).forEach((label) => {
+      console.log(label);
+      console.log(e.target[label]);
+      console.log(e.target[label].name);
+      console.log(e.target[label].value);
+      console.log("------------------");
     });
+
+    // formQuestions.forEach((label) => {
+    //   console.log(
+    //     e.target[label].name,
+    //     e.target[label].value,
+    //     e.target[label].value === ""
+    //   );
+    //   formData.append(label, e.target[label].value);
+    // });
+
+    for (const key of formData.keys()) {
+      console.log(key);
+    }
 
     for (const value of formData.values()) {
       console.log(value);
@@ -128,12 +137,11 @@ function ImportPage() {
         </div>
         <div className="flex flex-col gap-8">
           {/* DROPDOWNS */}
-          {importedColumns.length > 0 && (
+          {importedColumns && (
             <MatchingForm
               onSubmit={onSubmit}
               importedColumns={importedColumns}
               formQuestions={formQuestions}
-              errors={errors}
             />
           )}
           {/* BUTTONS */}

@@ -11,8 +11,12 @@ function Dropdown({ options, name, style, match }) {
           {match}
         </option>
       )}
-      {options.map((item, key) => {
-        return <option value={item}>{item}</option>;
+      {Object.keys(options).map((optionKey, index) => {
+        return (
+          <option key={index} value={optionKey}>
+            {options[optionKey]}
+          </option>
+        );
       })}
     </select>
   );
