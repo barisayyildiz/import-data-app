@@ -165,54 +165,6 @@ describe("Integration tests", () => {
     expect(screen.queryByTestId("file_preview")).toBeNull();
   });
 
-  // FIXME: can't find validation errors
-  it.skip("matching form component, form validation", async () => {
-    const initialState = {
-      form: {
-        allForms: [
-          {
-            id: "#1",
-            title: "hazard detection",
-            updated_at: "2022-08-09 02:43:54",
-            count: "12",
-            url: "https://",
-          },
-          {
-            id: "#2",
-            title: "save transaction",
-            updated_at: "2022-08-09 02:43:54",
-            count: "12",
-            url: "https://",
-          },
-        ],
-        selectedFormId: "#1",
-      },
-    };
-
-    renderWithProviders(<ImportPage />, {
-      preloadedState: initialState,
-    });
-
-    expect(screen.getByTestId("file_input")).toBeInTheDocument();
-
-    // upload file
-    const file = new File(["test_test_test"], "test.xls");
-    let uploader = screen.getByTestId("file_input");
-
-    await waitFor(() => {
-      fireEvent.change(uploader, {
-        target: { files: [file] },
-      });
-    });
-
-    await waitFor(() => {
-      expect(document.querySelectorAll("label").length).toBeGreaterThan(0);
-    });
-
-    fireEvent.click(screen.getByText("Continue"));
-    expect(screen.getByText(/should be selected/i)).toBeInTheDocument();
-  });
-
   it("user redirected to '/' when BACK button is clicked before file upload", async () => {
     const initialState = {
       form: {

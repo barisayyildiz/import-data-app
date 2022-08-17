@@ -74,10 +74,6 @@ function ImportPage() {
   const onSubmit = (e) => {
     e.preventDefault();
 
-    if (!isValidForm(e.target)) {
-      return;
-    }
-
     let formData = new FormData();
     formData.append("file", file);
     formData.append("formID", selectedFormId);
