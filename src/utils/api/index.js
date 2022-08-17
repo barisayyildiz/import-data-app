@@ -35,3 +35,17 @@ export const getFormQuestions = (formID) => {
   };
   return axios(config);
 };
+
+export const matchFileForm = (data) => {
+  const apiKey = getCookie("apiKey");
+  const config = {
+    method: "post",
+    url: "https://y-esen.jotform.dev/intern-api/import-api/save",
+    withCredentials: false,
+    headers: {
+      apiKey: apiKey,
+    },
+    data: data,
+  };
+  return axios(config);
+};

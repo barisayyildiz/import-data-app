@@ -8,7 +8,7 @@ import FilePreview from "../components/FilePreview";
 
 import MatchingForm from "../components/MatchingForm";
 
-import { uploadFile, getFormQuestions } from "../utils/api";
+import { uploadFile, getFormQuestions, matchFileForm } from "../utils/api";
 
 function ImportPage() {
   const [file, setFile] = useState(null);
@@ -33,9 +33,6 @@ function ImportPage() {
       let {
         data: { content: formContent },
       } = await getFormQuestions(selectedFormId);
-      // questions = Object.values(formContent);
-      // setFormQuestions(questions);
-      console.log(formContent);
       setFormQuestions(formContent);
     } catch (error) {
       console.log(error);
@@ -49,9 +46,6 @@ function ImportPage() {
       let {
         data: { content: fileContent },
       } = await uploadFile(data);
-      // const labels = Object.values(fileContent);
-      // setImportedColumns(labels);
-      console.log(fileContent);
       setImportedColumns(fileContent);
     } catch (error) {
       console.log(error);
@@ -62,35 +56,23 @@ function ImportPage() {
 
   const removeFile = () => {
     setFile(null);
-    setImportedColumns([]);
+    setImportedColumns(null);
+    setFormQuestions(null);
   };
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
 
     let formData = new FormData();
     formData.append("file", file);
     formData.append("formID", selectedFormId);
 
-    console.log(formQuestions);
-    console.log(importedColumns);
-
-    Object.keys(formQuestions).forEach((label) => {
-      console.log(label);
-      console.log(e.target[label]);
-      console.log(e.target[label].name);
-      console.log(e.target[label].value);
-      console.log("------------------");
+    const data = {};
+    e.target.querySelectorAll("select").forEach((select) => {
+      data[select.name] = select.value;
     });
 
-    // formQuestions.forEach((label) => {
-    //   console.log(
-    //     e.target[label].name,
-    //     e.target[label].value,
-    //     e.target[label].value === ""
-    //   );
-    //   formData.append(label, e.target[label].value);
-    // });
+    formData.append("data", JSON.stringify(data));
 
     for (const key of formData.keys()) {
       console.log(key);
@@ -101,6 +83,12 @@ function ImportPage() {
     }
 
     // TODO: formData sunucuya yollanacak
+    try {
+      const res = await matchFileForm(formData);
+      console.log(res);
+    } catch (error) {
+      console.log(error);
+    }
   };
   return (
     <div

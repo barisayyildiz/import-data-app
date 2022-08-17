@@ -7,8 +7,8 @@ function Dropdown({ options, name, style, match }) {
       {!match ? (
         <option hidden disabled selected></option>
       ) : (
-        <option selected value={match}>
-          {match}
+        <option selected value={match.value}>
+          {match.label}
         </option>
       )}
       {Object.keys(options).map((optionKey, index) => {

@@ -1,7 +1,7 @@
 import Label from "./Label";
 import Dropdown from "./Dropdown";
 
-import { returnBestMatch } from "../utils";
+import { returnBestMatch, getKeyByValue } from "../utils";
 
 export default function MatchingForm({
   onSubmit,
@@ -33,6 +33,7 @@ export default function MatchingForm({
           formQuestions[questionKey],
           Object.values(importedColumns)
         );
+        console.log(getKeyByValue(importedColumns, match));
         return (
           <div className="flex flex-col items-start gap-5 w-full" key={index}>
             <div className="flex flex-row items-center gap-2.5 w-full">
@@ -43,7 +44,10 @@ export default function MatchingForm({
                     className="grow-1"
                     options={importedColumns}
                     name={questionKey}
-                    match={match}
+                    match={{
+                      label: match,
+                      value: getKeyByValue(importedColumns, match),
+                    }}
                   />
                 </div>
               </div>
