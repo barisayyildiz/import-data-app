@@ -43,9 +43,9 @@ export const matchFileForm = (data) => {
     url: "https://y-esen.jotform.dev/intern-api/import-api/save",
     withCredentials: false,
     headers: {
-      apiKey: apiKey,
+      apiKey,
     },
-    data: data,
+    data,
   };
   return axios(config);
 };

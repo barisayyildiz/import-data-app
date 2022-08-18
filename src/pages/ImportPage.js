@@ -69,25 +69,21 @@ function ImportPage() {
 
     const data = {};
     e.target.querySelectorAll("select").forEach((select) => {
-      data[select.name] = select.value;
+      if (select.value) {
+        data[select.name] = select.value;
+      }
     });
 
     formData.append("data", JSON.stringify(data));
 
-    for (const key of formData.keys()) {
-      console.log(key);
-    }
-
-    for (const value of formData.values()) {
-      console.log(value);
-    }
-
     // TODO: formData sunucuya yollanacak
     try {
       const res = await matchFileForm(formData);
-      console.log(res);
+      if (res.status === 200) {
+        window.location = "/success";
+      }
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
   return (
