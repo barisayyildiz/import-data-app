@@ -29,6 +29,8 @@ function SuccessPage() {
             Import More Data
           </a>
           <a
+            target="_blank"
+            href="https://www.jotform.com/tables/"
             className="border-2 radius border-blue-400 py-3 px-8 color-blue-400 font-medium
 						flex gap-2.5 flex-row justify-center items-center text-xl"
           >

@@ -6,8 +6,8 @@ function FileInput({ onFileUpload, ...props }) {
   const [over, setOver] = useState(false);
   return (
     <div
-      style={{ width: "100%", backgroundColor: "rgba(243, 243, 254, 0.3)" }}
-      className="border border-dashed radius border-navy-75"
+      style={{ backgroundColor: "rgba(243, 243, 254, 0.3)" }}
+      className="border border-dashed radius border-navy-75 w-full"
       onDrop={(e) => {
         e.preventDefault();
         e.persist();
