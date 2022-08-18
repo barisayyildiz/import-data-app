@@ -5,6 +5,7 @@ import "../styles/Modal.scss";
 
 export default ({ children, isOpen, onRequestClose, props }) => (
   <Modal
+    id="scrollableDiv"
     className={{
       base: "modal-base",
       afterOpen: "modal-base_after-open",

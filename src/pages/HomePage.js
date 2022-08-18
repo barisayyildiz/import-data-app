@@ -5,8 +5,6 @@ import { toggleModal, toggleAuthModal } from "../store/slices/modalSlice.js";
 import Steps from "../components/Steps.js";
 import { getCookie } from "../utils/index.js";
 
-const apiKey = getCookie("apiKey");
-
 function HomePage() {
   const {
     header,
@@ -31,7 +29,7 @@ function HomePage() {
             <a
               data-testid="import_submissions_button"
               onClick={() => {
-                if (apiKey) {
+                if (getCookie("apiKey")) {
                   dispatch(toggleModal());
                 } else {
                   dispatch(toggleAuthModal());

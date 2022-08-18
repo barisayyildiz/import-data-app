@@ -2,10 +2,10 @@ import axios from "axios";
 
 import { getCookie } from "../index";
 
-export const getEnabledForms = () => {
+export const getEnabledForms = (offset, limit = 10) => {
   const apiKey = getCookie("apiKey");
   return axios.get(
-    `https://api.jotform.com/user/forms?apiKey=${apiKey}&filter=%7B%22status%22%3A%22ENABLED%22%7D`
+    `https://api.jotform.com/user/forms?apiKey=${apiKey}&filter=%7B%22status%22%3A%22ENABLED%22%7D&orderby=created_at&offset=${offset}&limit=${limit}`
   );
 };
 

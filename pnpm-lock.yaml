@@ -15,6 +15,7 @@ specifiers:
   path: ^0.12.7
   react: ^18.2.0
   react-dom: ^18.2.0
+  react-infinite-scroll-component: ^6.1.0
   react-modal: ^3.15.1
   react-redux: ^8.0.2
   react-router: ^6.3.0
@@ -43,6 +44,7 @@ dependencies:
   path: 0.12.7
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
+  react-infinite-scroll-component: 6.1.0_react@18.2.0
   react-modal: 3.15.1_biqbaboplfbrettd7655fr4n2y
   react-redux: 8.0.2_e42enmjmqb4imi3q3iaq2rrebm
   react-router: 6.3.0_react@18.2.0
@@ -8868,6 +8870,15 @@ packages:
     resolution: {integrity: sha512-/6UZ2qgEyH2aqzYZgQPxEnz33NJ2gNsnHA2o5+o4wW9bLM/JYQitNP9xPhsXwC08hMMovfGe/8retsdDsczPRg==}
     dev: false
 
+  /react-infinite-scroll-component/6.1.0_react@18.2.0:
+    resolution: {integrity: sha512-SQu5nCqy8DxQWpnUVLx7V7b7LcA37aM7tvoWjTLZp1dk6EJibM5/4EJKzOnl07/BsM1Y40sKLuqjCwwH/xV0TQ==}
+    peerDependencies:
+      react: '>=16.0.0'
+    dependencies:
+      react: 18.2.0
+      throttle-debounce: 2.3.0
+    dev: false
+
   /react-is/16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
     dev: false
@@ -10208,6 +10219,11 @@ packages:
 
   /throat/6.0.1:
     resolution: {integrity: sha512-8hmiGIJMDlwjg7dlJ4yKGLK8EsYqKgPWbG3b4wjJddKNwc7N7Dpn08Df4szr/sZdMVeOstrdYSsqzX6BYbcB+w==}
+    dev: false
+
+  /throttle-debounce/2.3.0:
+    resolution: {integrity: sha512-H7oLPV0P7+jgvrk+6mwwwBDmxTaxnu9HMXmloNLXwnNO0ZxZ31Orah2n8lU1eMPvsaowP2CX+USCgyovXfdOFQ==}
+    engines: {node: '>=8'}
     dev: false
 
   /thunky/1.1.0:

@@ -28,29 +28,46 @@ function FormSelector() {
 
   const inputRef = useRef(null);
 
+  const LIMIT = 6;
+
+  const [query, setQuery] = useState("");
+  const [selected, setSelected] = useState(null);
+  const [offset, setOffset] = useState(allForms.length);
+  const [fetched, setFetched] = useState(false);
+  const [hasMore, setHasMore] = useState(true);
+
   useEffect(() => {
-    if (!apiKey) {
+    if (!apiKey || fetched || !isOpen) {
       return;
     }
-    getEnabledForms()
+    fetchData();
+  }, [isOpen]);
+
+  const fetchData = () => {
+    console.log("fetch more data...");
+    console.log(offset);
+    getEnabledForms(offset, LIMIT)
       .then(({ data }) => {
         // status code her durumda 200 dönüyor
         // bu nedenle responseCode'a bakarak kontrol yaptım
         if (data.responseCode !== 200) {
           throw data.message;
         }
-        dispatch(setAllForms(data.content));
+        console.log(data);
+        if (data.content.length === 0) {
+          setHasMore(false);
+          return;
+        }
+        setOffset(data.content.length + offset);
+        setFetched(true);
+        dispatch(setAllForms([...allForms, ...data.content]));
       })
       .catch((e) => {
         console.error(e);
       });
-  }, [apiKey]);
-
-  const [query, setQuery] = useState("");
-  const [selected, setSelected] = useState(null);
+  };
 
   const handleSubmit = () => {
-    console.log("handle submit");
     dispatch(setSelectedForm(selected));
   };
   const handleClose = () => {
@@ -122,6 +139,8 @@ function FormSelector() {
               selected={selected}
               setSelected={setSelected}
               forms={filteredForms}
+              handleMore={fetchData}
+              hasMore={hasMore}
             />
           </div>
         </div>

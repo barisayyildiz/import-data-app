@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "@jotforminc/jotform.css";
+import "@jotforminc/jotform.css/animation.css";
 
 import Heading from "./Heading";
 import Footer from "./Footer";
