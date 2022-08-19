@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import debounce from "lodash.debounce";
 
 import { getEnabledForms } from "../utils/api";
+import { FORMS_PER_SCROLL } from "../constants";
 
 import {
   selectForm,
@@ -28,8 +29,6 @@ function FormSelector() {
 
   const inputRef = useRef(null);
 
-  const LIMIT = 6;
-
   const [forms, setForms] = useState([]);
 
   const [query, setQuery] = useState("");
@@ -48,7 +47,7 @@ function FormSelector() {
   const fetchData = () => {
     console.log("fetch more data...");
     console.log(offset);
-    getEnabledForms(offset, LIMIT)
+    getEnabledForms(offset, FORMS_PER_SCROLL)
       .then(({ data }) => {
         // status code her durumda 200 dönüyor
         // bu nedenle responseCode'a bakarak kontrol yaptım

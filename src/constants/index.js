@@ -1,3 +1,5 @@
+export const FORMS_PER_SCROLL = 5;
+
 export const companyInfo = {
   location: "111 Pine St. Suite 1815, San Francisco, CA 94111",
   name: "© 2021 JotForm Inc.",

@@ -12,7 +12,10 @@ function FormsList({ forms, selected, setSelected, handleMore, hasMore }) {
           overflow: "hidden",
         }}
         loader={
-          <div className="anim spin-loader w-10 h-10 border-4 border-navy-100 border-t-navy-300 radius-full my-1 mx-auto"></div>
+          <div
+            data-testid="scroll_loader"
+            className="anim spin-loader w-10 h-10 border-4 border-navy-100 border-t-navy-300 radius-full my-1 mx-auto"
+          ></div>
         }
         scrollableTarget="scrollableDiv"
         className="flex flex-col gap-4 w-full"
