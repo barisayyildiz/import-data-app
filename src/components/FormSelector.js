@@ -30,9 +30,11 @@ function FormSelector() {
 
   const LIMIT = 6;
 
+  const [forms, setForms] = useState([]);
+
   const [query, setQuery] = useState("");
   const [selected, setSelected] = useState(null);
-  const [offset, setOffset] = useState(allForms.length);
+  const [offset, setOffset] = useState(0);
   const [fetched, setFetched] = useState(false);
   const [hasMore, setHasMore] = useState(true);
 
@@ -61,6 +63,7 @@ function FormSelector() {
         setOffset(data.content.length + offset);
         setFetched(true);
         dispatch(setAllForms([...allForms, ...data.content]));
+        setForms([...forms, ...data.content]);
       })
       .catch((e) => {
         console.error(e);
@@ -77,9 +80,9 @@ function FormSelector() {
   const filterForms = () => {
     if (query !== "") {
       const reg = new RegExp(query, "i");
-      return allForms.filter((form) => reg.test(form.title));
+      return forms.filter((form) => reg.test(form.title));
     } else {
-      return allForms;
+      return forms;
     }
   };
   const filteredForms = filterForms();
@@ -95,9 +98,7 @@ function FormSelector() {
 
   const props = {
     isOpen,
-    // ariaHideApp: false,
     ariaHideApp: document.getElementById("root"),
-    // ariaHideApp: document.getElementsByClassName("App")[0],
     appElement: document.getElementsByClassName("App")[0],
     onRequestClose: handleClose,
     contentLabel: "Modal",

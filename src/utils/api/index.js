@@ -9,6 +9,11 @@ export const getEnabledForms = (offset, limit = 10) => {
   );
 };
 
+export const getFormInfo = (id) => {
+  const apiKey = getCookie("apiKey");
+  return axios.get(`https://api.jotform.com/form/${id}?apikey=${apiKey}`);
+};
+
 export const uploadFile = (data) => {
   const apiKey = getCookie("apiKey");
   const config = {
