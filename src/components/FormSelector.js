@@ -5,11 +5,7 @@ import debounce from "lodash.debounce";
 import { getEnabledForms } from "../utils/api";
 import { FORMS_PER_SCROLL } from "../constants";
 
-import {
-  selectForm,
-  setAllForms,
-  setSelectedForm,
-} from "../store/slices/formSlice";
+import { setSelectedForm } from "../store/slices/formSlice";
 import { selectModal, closeModal } from "../store/slices/modalSlice";
 
 import "../styles/FormSelector.scss";
@@ -24,7 +20,6 @@ function FormSelector() {
   const apiKey = getCookie("apiKey");
 
   const dispatch = useDispatch();
-  const { allForms, selectedForm } = useSelector(selectForm);
   const { isOpen } = useSelector(selectModal);
 
   const inputRef = useRef(null);
@@ -61,7 +56,6 @@ function FormSelector() {
         }
         setOffset(data.content.length + offset);
         setFetched(true);
-        dispatch(setAllForms([...allForms, ...data.content]));
         setForms([...forms, ...data.content]);
       })
       .catch((e) => {

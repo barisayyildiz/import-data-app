@@ -32,22 +32,6 @@ describe("Integration tests", () => {
   it("file input component removed and file preview component added in page after file upload", async () => {
     const initialState = {
       form: {
-        allForms: [
-          {
-            id: "#1",
-            title: "hazard detection",
-            updated_at: "2022-08-09 02:43:54",
-            count: "12",
-            url: "https://",
-          },
-          {
-            id: "#2",
-            title: "save transaction",
-            updated_at: "2022-08-09 02:43:54",
-            count: "12",
-            url: "https://",
-          },
-        ],
         selectedFormId: "#1",
       },
     };
@@ -75,22 +59,6 @@ describe("Integration tests", () => {
   it("continue button is initially disabled", () => {
     const initialState = {
       form: {
-        allForms: [
-          {
-            id: "#1",
-            title: "hazard detection",
-            updated_at: "2022-08-09 02:43:54",
-            count: "12",
-            url: "https://",
-          },
-          {
-            id: "#2",
-            title: "save transaction",
-            updated_at: "2022-08-09 02:43:54",
-            count: "12",
-            url: "https://",
-          },
-        ],
         selectedFormId: "#1",
       },
     };
@@ -107,22 +75,6 @@ describe("Integration tests", () => {
   it("file removed when BACK button is clicked after file upload", async () => {
     const initialState = {
       form: {
-        allForms: [
-          {
-            id: "#1",
-            title: "hazard detection",
-            updated_at: "2022-08-09 02:43:54",
-            count: "12",
-            url: "https://",
-          },
-          {
-            id: "#2",
-            title: "save transaction",
-            updated_at: "2022-08-09 02:43:54",
-            count: "12",
-            url: "https://",
-          },
-        ],
         selectedFormId: "#1",
       },
     };
@@ -152,22 +104,6 @@ describe("Integration tests", () => {
   it("user redirected to '/' when BACK button is clicked before file upload", async () => {
     const initialState = {
       form: {
-        allForms: [
-          {
-            id: "#1",
-            title: "hazard detection",
-            updated_at: "2022-08-09 02:43:54",
-            count: "12",
-            url: "https://",
-          },
-          {
-            id: "#2",
-            title: "save transaction",
-            updated_at: "2022-08-09 02:43:54",
-            count: "12",
-            url: "https://",
-          },
-        ],
         selectedFormId: "#1",
       },
     };
@@ -188,29 +124,6 @@ describe("Integration tests", () => {
         isOpen: true,
       },
       form: {
-        allForms: [
-          {
-            id: "#1",
-            title: "hazard detection",
-            updated_at: "2022-08-09 02:43:54",
-            count: "12",
-            url: "https://",
-          },
-          {
-            id: "#2",
-            title: "save transaction",
-            updated_at: "2022-08-09 02:43:54",
-            count: "12",
-            url: "https://",
-          },
-          {
-            id: "#3",
-            title: "buy concert tickets",
-            updated_at: "2022-08-09 02:43:54",
-            count: "12",
-            url: "https://",
-          },
-        ],
         selectedFormId: null,
       },
     };
