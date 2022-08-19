@@ -26,9 +26,6 @@ function ImportPage() {
   const onFileUpload = async (uploadedFile) => {
     setFile(uploadedFile);
 
-    console.log("on file upload");
-
-    let questions = [];
     try {
       let {
         data: { content: formContent },
@@ -37,8 +34,6 @@ function ImportPage() {
     } catch (error) {
       console.log(error);
     }
-
-    console.log("onfile upload 2");
 
     try {
       const data = new FormData();
@@ -50,8 +45,6 @@ function ImportPage() {
     } catch (error) {
       console.log(error);
     }
-
-    console.log("onfile upload 3");
   };
 
   const removeFile = () => {

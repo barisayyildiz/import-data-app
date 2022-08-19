@@ -1,17 +1,30 @@
 import { screen, fireEvent, waitFor } from "@testing-library/react";
 import { renderWithProviders } from "../helpers";
 
+import { setCookie, getCookie } from "../../utils";
+
 import App from "../../components/App";
 import ImportPage from "../../pages/ImportPage";
 
 describe("Integration tests", () => {
-  it("modal gets opened when import submission button is clicked", () => {
+  it("auth modal gets opened when import submission button is clicked", () => {
     renderWithProviders(<App />);
 
-    expect(screen.queryByText("Select Forms")).toBeNull();
+    expect(screen.queryByTestId("auth_iframe")).toBeNull();
     const btn = screen.getByTestId("import_submissions_button");
     fireEvent.click(btn);
-    expect(screen.getByText("Select Forms")).toBeInTheDocument();
+    expect(screen.queryByTestId("auth_iframe")).toBeInTheDocument();
+  });
+
+  it("form modal gets opened when import submission button is clicked", () => {
+    const { store } = renderWithProviders(<App />);
+
+    setCookie("apiKey", "mock");
+
+    expect(screen.queryByText(/select forms/i)).toBeNull();
+    const btn = screen.getByTestId("import_submissions_button");
+    fireEvent.click(btn);
+    expect(screen.getByText(/select forms/i)).toBeInTheDocument();
   });
 
   it.skip("modal get closed when close button is clicked", () => {

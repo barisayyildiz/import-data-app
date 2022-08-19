@@ -50,6 +50,7 @@ export default function AuthModal() {
   return (
     <MyModal props={props}>
       <iframe
+        data-testid="auth_iframe"
         style={{
           display: "block",
           width: "100%",

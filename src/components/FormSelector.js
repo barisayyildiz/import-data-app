@@ -40,8 +40,6 @@ function FormSelector() {
   }, [isOpen]);
 
   const fetchData = () => {
-    console.log("fetch more data...");
-    console.log(offset);
     getEnabledForms(offset, FORMS_PER_SCROLL)
       .then(({ data }) => {
         // status code her durumda 200 dönüyor
