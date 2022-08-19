@@ -26,7 +26,7 @@ function FormPicker() {
 
   if (!form) {
     return (
-      <div>
+      <div data-testid="form_picker_skeleton">
         <ContentLoader
           speed={1}
           width={1200}
