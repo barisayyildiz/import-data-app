@@ -146,7 +146,7 @@ function FormSelector() {
           </div>
         </div>
         <div
-          className="flex flex-row justify-between items-center"
+          className="flex flex-row justify-between items-center sticky w-full bottom-0"
           style={{
             backgroundColor: "#FAFAFC",
             borderColor: "#DCE2F0",
