@@ -19,9 +19,9 @@ import Modal from "react-modal";
 import CloseIcon from "../assets/svg/IconClose";
 import { getCookie } from "../utils";
 
-const apiKey = getCookie("apiKey");
-
 function FormSelector() {
+  const apiKey = getCookie("apiKey");
+
   const dispatch = useDispatch();
   const { allForms, selectedForm } = useSelector(selectForm);
   const { isOpen } = useSelector(selectModal);
