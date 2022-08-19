@@ -1,6 +1,20 @@
 import axios from "axios";
 
-import { getCookie } from "../index";
+import { getCookie, removeCookie } from "../index";
+
+axios.interceptors.response.use(
+  (config) => {
+    console.log(config);
+    if (config.data.responseCode === 401) {
+      removeCookie("apiKey");
+      window.location = "/";
+    }
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
+  }
+);
 
 export const getEnabledForms = (offset, limit = 10) => {
   const apiKey = getCookie("apiKey");

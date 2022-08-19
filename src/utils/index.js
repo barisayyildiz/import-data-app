@@ -45,6 +45,10 @@ export const setCookie = (name, value, days) => {
   document.cookie = `${name}=${value || ""}${expires}; path=/`;
 };
 
+export const removeCookie = (name) => {
+  document.cookie = `${name}=;expires=Thu, 01 Jan 1970 00:00:01 GMT`;
+};
+
 export const returnBestMatch = (main, target) => {
   const { bestMatch } = stringSimilarity.findBestMatch(main, target);
   if (bestMatch.rating >= 0.5) {
