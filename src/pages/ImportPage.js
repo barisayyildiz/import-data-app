@@ -106,7 +106,7 @@ function ImportPage() {
           className="flex flex-col gap-4 items-start"
           style={{ margin: "0px auto", width: "100%" }}
         >
-          <h3 className="text-lg font-medium">
+          <h3 className="text-lg font-medium color-navy-700">
             Choose a file from your device
           </h3>
           {file === null ? (

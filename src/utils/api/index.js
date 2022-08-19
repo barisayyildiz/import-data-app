@@ -4,7 +4,6 @@ import { getCookie, removeCookie } from "../index";
 
 axios.interceptors.response.use(
   (config) => {
-    console.log(config);
     if (config.data.responseCode === 401) {
       removeCookie("apiKey");
       window.location = "/";
