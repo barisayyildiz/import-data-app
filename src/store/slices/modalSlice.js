@@ -7,11 +7,17 @@ export const modalSlice = createSlice({
     isAuthOpen: false,
   },
   reducers: {
+    openModal: (state) => {
+      state.isOpen = true;
+    },
     toggleModal: (state) => {
       state.isOpen = !state.isOpen;
     },
     closeModal: (state) => {
       state.isOpen = false;
+    },
+    openAuthModal: (state) => {
+      state.isAuthOpen = true;
     },
     toggleAuthModal: (state) => {
       state.isAuthOpen = !state.isAuthOpen;
@@ -22,8 +28,14 @@ export const modalSlice = createSlice({
   },
 });
 
-export const { toggleModal, closeModal, toggleAuthModal, closeAuthModal } =
-  modalSlice.actions;
+export const {
+  openModal,
+  toggleModal,
+  closeModal,
+  openAuthModal,
+  toggleAuthModal,
+  closeAuthModal,
+} = modalSlice.actions;
 export const selectModal = (state) => state.modal;
 
 export default modalSlice.reducer;

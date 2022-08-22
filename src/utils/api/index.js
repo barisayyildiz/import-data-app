@@ -1,11 +1,16 @@
 import axios from "axios";
 
+import store from "../../store";
+import { openAuthModal, closeModal } from "../../store/slices/modalSlice";
+
 import { getCookie, removeCookie } from "../index";
 
 axios.interceptors.response.use(
   (config) => {
     if (config.data.responseCode === 401) {
       removeCookie("apiKey");
+      store.dispatch(openAuthModal());
+      store.dispatch(closeModal());
       window.location = "/";
     }
     return config;

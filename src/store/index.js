@@ -13,7 +13,7 @@ export const reducers = combineReducers({
 const persistConfig = {
   key: "root",
   storage,
-  blacklist: ["modal"],
+  // blacklist: ["modal"],
 };
 
 const persistedReducer = persistReducer(persistConfig, reducers);

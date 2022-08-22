@@ -43,7 +43,7 @@ function HomePage() {
           </div>
         </div>
       </div>
-      <Steps />
+      <Steps header={usageHeader} steps={steps} />
     </div>
   );
 }

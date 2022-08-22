@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+
 import { selectForm } from "../store/slices/formSlice";
 import { homePageTexts } from "../constants";
 import FormPicker from "../components/FormPicker";
 import FileInput from "../components/FileInput";
 import FilePreview from "../components/FilePreview";
-
 import MatchingForm from "../components/MatchingForm";
-
 import { uploadFile, getFormQuestions, matchFileForm } from "../utils/api";
 
 function ImportPage() {
@@ -15,10 +15,11 @@ function ImportPage() {
   const [importedColumns, setImportedColumns] = useState(null);
   const [formQuestions, setFormQuestions] = useState(null);
 
-  const { selectedFormId } = useSelector(selectForm);
+  const navigate = useNavigate();
 
+  const { selectedFormId } = useSelector(selectForm);
   if (!selectedFormId) {
-    window.location = "/";
+    navigate("/");
   }
 
   const { header, subHeader } = homePageTexts;
@@ -73,7 +74,7 @@ function ImportPage() {
     try {
       const res = await matchFileForm(formData);
       if (res.status === 200) {
-        window.location = "/success";
+        navigate("/success");
       }
     } catch (error) {
       console.error(error);
@@ -130,7 +131,7 @@ function ImportPage() {
                 if (file) {
                   removeFile();
                 } else {
-                  window.location = "/";
+                  navigate("/");
                 }
               }}
             >

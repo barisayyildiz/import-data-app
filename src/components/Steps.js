@@ -1,13 +1,10 @@
 import { homePageTexts } from "../constants";
 
-function Steps() {
-  const {
-    usage: { header: usageHeader, steps },
-  } = homePageTexts;
+function Steps({ header, steps }) {
   return (
     <div>
       <div className="flex flex-col justify-start p-0 gap-1 text-center mx-0 my-24">
-        <h2 className="text-6xl color-navy-500 font-bold">{usageHeader}</h2>
+        <h2 className="text-6xl color-navy-500 font-bold">{header}</h2>
         <ul className="flex flex-row justify-center items-center">
           {steps.map((step, idx) => {
             const { style } = step;
