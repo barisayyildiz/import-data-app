@@ -70,15 +70,8 @@ function ImportPage() {
 
     formData.append("data", JSON.stringify(data));
 
-    // TODO: formData sunucuya yollanacak
-    try {
-      const res = await matchFileForm(formData);
-      if (res.status === 200) {
-        navigate("/success");
-      }
-    } catch (error) {
-      console.error(error);
-    }
+    matchFileForm(formData);
+    navigate("/success");
   };
   return (
     <div

@@ -63,6 +63,7 @@ function FormSelector() {
 
   const handleSubmit = () => {
     dispatch(setSelectedForm(selected));
+    handleClose();
   };
   const handleClose = () => {
     dispatch(closeModal());
