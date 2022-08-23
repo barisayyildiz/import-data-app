@@ -64,7 +64,7 @@ function ImportPage() {
     const data = {};
     e.target.querySelectorAll("select").forEach((select) => {
       if (select.value) {
-        data[select.name] = select.value;
+        data[select.name] = Number(select.value);
       }
     });
 
